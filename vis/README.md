@@ -14,7 +14,7 @@ Notes
 
 2. College logo images are used to represent the teams - this is an effective and widely used presentation of the college teams.
 
-3. Actual AP rankings are shown on somewhat de-emphasized in light gray background while the predictions highlighted in cyan.
+3. Actual AP rankings are de-emphasized in light gray background while the predictions highlighted in cyan.
 
 4. Hovering over a team icon will bring up a tooltip window that can show the key statistics for that team and week.
 
