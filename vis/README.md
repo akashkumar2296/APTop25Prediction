@@ -24,3 +24,35 @@ Notes
 
 7. The js has been developed so that it is ready to be hooked up to some real datasets.  For now, the rankings are randomly generated and the number of weeks to show hard-coded.  These are very easy to fix once we can hook it up to the actual datasets and prediction model.
 
+
+
+Flask Installation
+------------------
+
+# instructions for debian system
+# install virtualenv 
+sudo apt-get install python-virtualenv
+
+# check version, mine is 15.0.1
+virtualenv --version
+
+# create a folder where you will store your projects
+mkdir .flaskenv && cd .flaskenv
+
+# create virtual environment "flask-env"
+virtualenv flask-env
+
+# activate virtual environment
+source flask-env/bin/activate
+
+# now we are in the virtual environment, lets install flask
+pip install Flask
+
+
+Flask - Running App
+-------------------
+#Make sure you're in Virtual environment following steps from above
+python top25.py
+
+#Use browser to access app
+http://127.0.0.1:5001/
