@@ -1,34 +1,15 @@
+
 var num_week = 16;
 var num_team = 25;
-var tile_size = {w:35, h:25}
-var svg_size = {w:tile_size.w*(num_team)+100, h:tile_size.h*(num_week)+100}
-var teams =["alabama",
-			"bc",
-			"clemson",
-			"fl",
-			"fresno",
-			"georgia",
-			"houston",
-			"iowa",
-			"lsu",
-			"mi",
-			"miss",
-			"notre",
-			"ohiostate",
-			"ok",
-			"pennstate",
-			"syracuse",
-			"tam",
-			"texas",
-			"ucf",
-			"uk",
-			"utah",
-			"utahstate",
-			"virginia",
-			"ws",
-			"wv"]
+var rankings_tile_size = {w:35, h:25}
+var score_tile_size = {w:60, h:60}
+// var svg_size = {w:rankings_tile_size.w*(num_team)+100, h:rankings_tile_size.h*(num_week)+100}
 var apcolor = "lightgray";
 var predictcolor = "cyan";
+
+function calSvgSize(row, col, tile_size) {
+	return {w:tile_size.w*col+50, h:tile_size.h*row+50}
+}
 
 
 function makeGridData(rowcount, colcount, tile_size) {
@@ -65,13 +46,6 @@ function makeGridData(rowcount, colcount, tile_size) {
 	return data;
 }
 
-function getPrediction(week) {
-	var rankings=new Array();
-	for (i=0; i<25; i++) {
- 		rankings.push(teams[Math.floor(Math.random() * teams.length)]);
-	}
-	return rankings;
-}
 
 function drawGrid(gridData) {
 
@@ -118,7 +92,7 @@ function rowToColBasedGridData(rowBasedData) {
 }
 
 
-function drawWeekHeaders(headerCells, gridData) {
+function drawWeekHeaders(grid, headerCells, tile_size) {
 	var weekHeader = grid.selectAll(".weekheader")
 		.data(headerCells)
 		.enter()
@@ -133,7 +107,7 @@ function drawWeekHeaders(headerCells, gridData) {
 }
 
 
-function drawRankingHeaders(rankingHeaderCells, gridData) {
+function drawRankingHeaders(grid, rankingHeaderCells, tile_size) {
 	var rankingHeader = grid.selectAll(".rankingheader")
 		.data(rankingHeaderCells)
 		.enter()
@@ -165,7 +139,7 @@ function showTooltip(week, team) {
 
 }
 
-function drawRankings(rankingCells, rankings, background, week) {
+function drawRankings(grid, rankingCells, rankings, background, week) {
 
 	grid.selectAll(".rankings")
 		.data(rankingCells)
@@ -198,25 +172,42 @@ function drawRankings(rankingCells, rankings, background, week) {
 
 
 
+function showRankingsGrid(grid, num_week) {
+	var gridData = makeGridData(num_week, num_team, rankings_tile_size);
+	var colBasedGridData = rowToColBasedGridData(gridData)
+	drawWeekHeaders(grid, colBasedGridData[0], rankings_tile_size);
+	drawRankingHeaders(grid, gridData[0], rankings_tile_size);
+	for (var i=1; i<num_week; i++) {
+		drawRankings(grid, gridData[i], getRankings(i), apcolor, i);
+	}
+	drawRankings(grid, gridData[num_week], getRankings(num_week), predictcolor, num_week );
+}
 
-var grid = d3.select("#grid")
+function showScoreGrid(grid, num_week) {
+	var gridData = makeGridData(num_week, num_team, score_tile_size);
+	var colBasedGridData = rowToColBasedGridData(gridData)
+	for (var i=1; i<num_week; i++) {
+		drawRankings(grid, gridData[i], getRankings(i), apcolor, i);
+	}
+	drawRankings(grid, gridData[num_week], getRankings(num_week), predictcolor, num_week );
+}
+
+var rGridSize = calSvgSize(5,27,rankings_tile_size);
+
+var rankings_grid = d3.select("#grid")
 	.append("svg")
-	.attr("width",svg_size.w+"px")
-	.attr("height",svg_size.h+"px");
+	.attr("width",rGridSize.w+"px")
+	.attr("height",rGridSize.h+"px");
 
 
+rankings_grid.call(tooltip);
+
+var sGridSize = calSvgSize(13,13,score_tile_size);
+var score_grid = d3.select("#grid")
+	.append("svg")
+	.attr("width",sGridSize.w+"px")
+	.attr("height",sGridSize.h+"px");
 
 
-grid.call(tooltip);
-	
-
-
-var gridData = makeGridData(num_week, num_team, tile_size);
-var colBasedGridData = rowToColBasedGridData(gridData)
-// drawGrid(gridData);
-drawWeekHeaders(colBasedGridData[0]);
-drawRankingHeaders(gridData[0]);
-drawRankings(gridData[1], getPrediction(1), apcolor, 1 );
-drawRankings(gridData[2], getPrediction(2), apcolor, 2);
-drawRankings(gridData[3], getPrediction(3), apcolor, 3);
-drawRankings(gridData[4], getPrediction(4), predictcolor, 4);
+showRankingsGrid(rankings_grid, 5);
+showScoreGrid(score_grid, 12);
