@@ -194,6 +194,7 @@ function showScoreGrid(grid, num_week) {
 
 var rGridSize = calSvgSize(5,27,rankings_tile_size);
 
+
 var rankings_grid = d3.select("#grid")
 	.append("svg")
 	.attr("width",rGridSize.w+"px")
@@ -201,13 +202,184 @@ var rankings_grid = d3.select("#grid")
 
 
 rankings_grid.call(tooltip);
+// showRankingsGrid(rankings_grid, 5);
 
-var sGridSize = calSvgSize(13,13,score_tile_size);
-var score_grid = d3.select("#grid")
-	.append("svg")
-	.attr("width",sGridSize.w+"px")
-	.attr("height",sGridSize.h+"px");
+var radius = 25;
+var circles = d3.range(5).map(function() {
+	return {
+	  x: Math.round(Math.random() * (rGridSize.w - radius * 2) + radius),
+	  y: Math.round(Math.random() * (rGridSize.h - radius * 2) + radius)
+	};
+  });
+
+  var color = d3.scale.ordinal()
+	  .range(d3.schemeCategory20);
+  
+var gamedata1 = {
+	 id: "gamedata1"
+	,team1: {id:"georgia", score: 24}
+	,team2: {id:"alabama", score: 0}
+	,time: {q:"3rd",r:"4:34"}
+}
+var gamedata2 = {
+	id: "gamedata2"
+   ,team1: {id:"lsu", score: 24}
+   ,team2: {id:"miss", score: 0}
+   ,time: {q:"4th",r:"0:50"}
+}
+
+var boxdata1 = { x: 50, y: 50, width:100, height:100};
+var boxdata2 = { x: 80, y: 100, width:80, height:80};
 
 
-showRankingsGrid(rankings_grid, 5);
-showScoreGrid(score_grid, 12);
+
+function drawScorebox(svgarea, gamedata, boxdata) {
+
+	svgdata = new Array();
+	svgdata.push(gamedata);
+
+	var scorebox = svgarea.selectAll(".scorebox")
+	.data(svgdata)
+	.enter()
+	.append("rect")
+	.attr("x", boxdata.x)
+	.attr("y",boxdata.y)
+	.attr("width", boxdata.width)
+	.attr("height", boxdata.height)
+	.style("fill", "lightgray")
+	.style("stroke", "#222");
+
+	var team1 = svgarea.selectAll(".scorebox")
+	.data(svgdata)
+	.enter()
+	.append("svg:image")
+	.attr("xlink:href",  function(d) { return "/static/images/" + d.team1.id +".png"})
+	.attr("x", boxdata.x+2)
+	.attr("y", boxdata.y)
+	.attr("width", boxdata.width/3)
+	.attr("height", boxdata.height/3)
+	.style("stroke", "black");
+
+	var score1 = svgarea.selectAll(".scorebox")
+	.data(svgdata)
+	.enter()
+	.append("text")
+	.attr("x", boxdata.x+2)
+	.attr("y", boxdata.y+boxdata.height/3+15)
+	.text(function(d) {return d.team1.score})
+	.classed("score", true);
+
+
+	var team2 = svgarea.selectAll(".scorebox")
+	.data(svgdata)
+	.enter()
+	.append("svg:image")
+	.attr("xlink:href",  function(d) { return "/static/images/" + d.team2.id +".png"})
+	.attr("x", boxdata.x+boxdata.width*2/3-2)
+	.attr("y", boxdata.y)
+	.attr("width", boxdata.width/3)
+	.attr("height", boxdata.height/3)
+	.style("stroke", "black");
+
+	var score2 = svgarea.selectAll(".scorebox")
+	.data(svgdata)
+	.enter()
+	.append("text")
+	.attr("x", boxdata.x+boxdata.width-18)
+	.attr("y", boxdata.y+boxdata.height/3+15)
+	.text(function(d) {return d.team2.score})
+	.classed("score", true);
+
+	var timeq = svgarea.selectAll(".scorebox")
+	.data(svgdata)
+	.enter()
+	.append("text")
+	.attr("x", boxdata.x+2)
+	.attr("y", boxdata.y+boxdata.height/3*2+10)
+	.text(function(d) {return d.time.q})
+	.classed("time", true);
+
+	var timer = svgarea.selectAll(".scorebox")
+	.data(svgdata)
+	.enter()
+	.append("text")
+	.attr("x", boxdata.x+25)
+	.attr("y", boxdata.y+boxdata.height/3*2+10)
+	.text(function(d) {return d.time.r})
+	.classed("time", true);
+
+
+	return {box:scorebox, team1:team1, team2:team2, score1:score1, score2:score2, timeq:timeq, timer:timer};
+
+}
+
+function updateScorebox(svgarea, gamedata, boxdata, scorebox) {
+	// scorebox.box.remove();
+
+	// box:scorebox, team1:team1, team2:team2, score1:score1, score2:score2, timeq:timeq, timer:timer
+	// for (var k in scorebox) {
+	// 	k.remove();
+	// }
+
+	drawScorebox(svgarea, gamedata, boxdata);
+}
+
+
+var scorebox1 = drawScorebox(rankings_grid, gamedata1, boxdata1);
+// scorebox1 = updateScorebox(rankings_grid, gamedata2, boxdata1, scorebox1); 
+
+
+
+// rankings_grid.selectAll(".scorebubble")
+// 	.data(circles)
+// 	.enter().append("rect")
+// 	  .attr("x", function(d) { return d.x; })
+// 	  .attr("y", function(d) { return d.y; })
+// 	  .attr("width", function(d) { return radius*2 })
+// 	  .attr("height", function(d) { return radius*2 })
+// 	  .style("fill", "blue")
+// 		.style("stroke", "#222")
+// 		.call(d3.drag()
+// 		  .on("start", dragstarted)
+// 		  .on("drag", dragged)
+// 		  .on("end", dragended))
+// 	  .on("dblclick", dblclick);
+
+
+//   rankings_grid.selectAll(".scorebubble")
+// 	  .data(circles)
+// 	  .enter()
+// 	  .append("svg:image")
+// 	  .attr("xlink:href",  "/static/images/georgia.png")
+// 	  .attr("x", function(d) { return d.x; })
+// 	  .attr("y", function(d) { return d.y; })
+// 	  .attr("width", function(d) { return radius })
+// 	  .attr("height", function(d) { return radius});
+
+
+
+	  
+  
+  function dragstarted(d) {
+	d3.select(this).raise().classed("active", true);
+  }
+  function dblclick(d) {
+	d3.select(this).attr("width", d3.select(this).attr("width") * 1.2 > radius * 2 ? radius : d3.select(this).attr("width") * 1.2 );
+	d3.select(this).attr("height", d3.select(this).attr("height") * 1.2 > radius * 2 ? radius : d3.select(this).attr("height") * 1.2 );
+  }
+  
+  function dragged(d) {
+	d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
+  }
+  
+  function dragended(d) {
+	d3.select(this).classed("active", false);
+  }
+  
+
+// var sGridSize = calSvgSize(13,13,score_tile_size);
+// var score_grid = d3.select("#grid")
+// 	.append("svg")
+// 	.attr("width",sGridSize.w+"px")
+// 	.attr("height",sGridSize.h+"px");
+// showScoreGrid(score_grid, 12);

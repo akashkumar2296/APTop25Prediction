@@ -8,7 +8,15 @@
 				color: white;
 				border-radius: 2px;
 			}
-		
+
+		.score {	
+				font-family: sans-serif;
+				font-size: 14px; 
+		}
+		.time {	
+				font-family: sans-serif;
+				font-size: 12px; 
+		}
 	</style>
 			
 <head>
@@ -16,6 +24,7 @@
 	<script type="text/javascript" src="{{ url_for('static', filename='lib/d3-queue.v3.min.js') }}"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='lib/topojson.v1.min.js') }}"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='lib/d3.tip.v0.6.3.js') }}"></script>
+	<script type="text/javascript" src="//d3js.org/d3.v4.min.js"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='scripts/data.js') }}"></script>
 </head>
