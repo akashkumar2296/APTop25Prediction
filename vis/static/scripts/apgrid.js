@@ -86,6 +86,11 @@ function onchange() {
 	refreshRankingsGrid(selectValue);
 };
 
+d3.select('#gridcontrol')
+.append('text')
+.classed("option", true)
+.text("  Current Week: " + getCurrentWeek());
+
 
 function refreshRankingsGrid(num_weeks) {
 	var num_weeks = parseInt(num_weeks);
