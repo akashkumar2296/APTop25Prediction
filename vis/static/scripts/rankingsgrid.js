@@ -10,7 +10,11 @@ function drawWeekHeaders(grid, headerCells, tile_size, num_week) {
 		.attr("y", function(d) { return d.y+tile_size.h/2+5; })
 		.attr("font-size", "10px")
 		.attr("fill", "red")
-		.text(function(d, i) { return "W"+ (i+1+getCurrentWeek()-num_week);});
+		.text(function(d, i) { 
+					var week=i+2+getCurrentWeek()-num_week;
+					if (week > getCurrentWeek()) return "PRE"; 
+					else return "W"+ week;
+				});
 }
 
 
@@ -25,7 +29,7 @@ function drawRankingHeaders(grid, rankingHeaderCells, tile_size) {
 		.attr("y", function(d) { return d.y+tile_size.h/2+5; })
 		.attr("font-size", "10px")
 		.attr("fill", "red")
-		.text(function(d, i) { return "#"+i;});
+		.text(function(d, i) { return "#"+(i+1)});
 
 }
 
@@ -76,13 +80,13 @@ function drawRankings(grid, rankingCells, rankings, background, week) {
 
 
 function showRankingsGrid(grid, num_week, tile_size) {
-	var gridData = makeGridData(num_week, num_team, tile_size);
+	var gridData = makeGridData(num_week+1, num_team, tile_size);
 	var colBasedGridData = rowToColBasedGridData(gridData)
-	drawWeekHeaders(grid, colBasedGridData[0], tile_size, num_week);
+	drawWeekHeaders(grid, colBasedGridData[0], tile_size, num_week+1);
 	drawRankingHeaders(grid, gridData[0], tile_size);
-	for (var i=1; i<num_week; i++) {
+	for (var i=1; i<=num_week; i++) {
 		drawRankings(grid, gridData[i], getRankings(i+getCurrentWeek()-num_week), apcolor, i);
 	}
-	drawRankings(grid, gridData[num_week], getRankings(getCurrentWeek()), predictcolor, num_week );
+	drawRankings(grid, gridData[num_week+1], getPrediction(), predictcolor, num_week+1 );
 	grid.call(tooltip);
 }

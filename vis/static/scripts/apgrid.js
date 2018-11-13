@@ -88,7 +88,8 @@ function onchange() {
 
 
 function refreshRankingsGrid(num_weeks) {
-	var rGridSize = calSvgSize(num_weeks,27,rankings_tile_size);
+	var num_weeks = parseInt(num_weeks);
+	var rGridSize = calSvgSize(num_weeks+1,27,rankings_tile_size);
 	d3.select("#grid").selectAll("*").remove();
 	rankings_grid = d3.select("#grid")
 		.append("svg")
@@ -106,9 +107,6 @@ var rankings_grid = d3.select("#grid")
 	.attr("height",rGridSize.h+"px")
 	;
 
-showRankingsGrid(rankings_grid, 5, rankings_tile_size);
-
-
 
 var sGridSize = calSvgSize(13,13,score_tile_size);
 var score_grid = d3.select("#scoreboard")
@@ -119,4 +117,6 @@ var score_grid = d3.select("#scoreboard")
 
 var scoreboxes = drawScorebox3(score_grid, getGameData(), score_tile_size);
 
-setInterval(function() { refreshScore(score_grid)}, 1000);
+refreshRankingsGrid(1);
+
+// setInterval(function() { refreshScore(score_grid)}, 1000);

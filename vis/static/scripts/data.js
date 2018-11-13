@@ -1,49 +1,48 @@
-var teams =["alabama",
-			"bc",
-			"clemson",
-			"fl",
-			"fresno",
-			"georgia",
-			"houston",
-			"iowa",
-			"lsu",
-			"mi",
-			"miss",
-			"notre",
-			"ohiostate",
-			"ok",
-			"pennstate",
-			"syracuse",
-			"tam",
-			"texas",
-			"ucf",
-			"uk",
-			"utah",
-			"utahstate",
-			"virginia",
-			"ws",
-			"wv"]
+var currentPrediction = new Array();
+var realMode = false;
 
-function getCurrentWeek() {
-	return 12;
+function getCurrentWeek() 
+{	
+	if (realMode) {
+		//TODO: plug in interface with Python model
+	}
+	else 
+		return 12;
 }	
 
 function getRankings(week) {
-	var rankings=new Array();
-	for (i=0; i<25; i++) {
-		var newTeam = teams[Math.floor(Math.random() * teams.length)];
-		var found = false;
-		for (j=0; j<rankings.length && !found; j++) {
-			found = rankings[j] == newTeam;
-		}
-		if (found) 
-			i--;
-		else
-	 		rankings.push(newTeam);
-	}
-	return rankings;
+	return aprankings[week-1]
 }
 
+function getPrediction() {
+	if (currentPrediction.length == 0)
+		currentPrediction = runPrediction();
+	
+	return currentPrediction;
+}
+
+function runPrediction() {
+	if (realMode) {
+		//TODO: plug in interface with Python model
+	}
+	else {
+		var rankings = getRankings(getCurrentWeek());
+		var prediction = new Array();
+		console.log(prediction);
+		for (var i=0; i < rankings.length; i++)
+			prediction.push(rankings[i]);
+		team0 = prediction[0]
+		team5 = prediction[5]
+		team13 = prediction[13]
+		team24 = prediction[24]
+		prediction[0] = team5;
+		prediction[5] = team0;
+		prediction[13] = team24;
+		prediction[24] = team13;
+		return prediction;
+	}
+
+}
 
 function getGameData() {
 	var gamedata1 = {
@@ -55,14 +54,14 @@ function getGameData() {
 	var gamedata2 = {
 	   id: "gamedata2"
 	  ,team1: {id:"lsu", score: 45}
-	  ,team2: {id:"miss", score: 23}
+	  ,team2: {id:"westernmi", score: 23}
 	  ,time: "4th - 0:50"
 	}
 
 	var gamedata3 = {
 		id: "gamedata3"
 	   ,team1: {id:"houston", score: 45}
-	   ,team2: {id:"uk", score: 23}
+	   ,team2: {id:"kentucky", score: 23}
 	   ,time: "1st - 2:34"
 	 }
  
