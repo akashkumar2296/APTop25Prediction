@@ -1,29 +1,55 @@
-var currentPrediction = new Array();
-var realMode = false;
+var cachedPrediction = new Array();
+var realMode = false; //set to true to use Python data.
 
 function getCurrentWeek() 
 {	
 	if (realMode) {
-		//TODO: plug in interface with Python model
+		//TODO: retrieve the current week from Python
 	}
 	else 
-		return 12;
+		return sim_currentweek;
 }	
 
 function getRankings(week) {
-	return aprankings[week-1]
+	if (realMode) {
+		//TODO: retrieve AP rankings for the given week
+		//returned data is an Array of 25 team names for the given week
+		//week is an int from 1 to the last week number of the season.
+	}
+	else {
+		return sim_aprankings[week-1]
+	}
 }
 
 function getPrediction() {
-	if (currentPrediction.length == 0)
-		currentPrediction = runPrediction();
+	if (cachedPrediction.length == 0)
+		cachedPrediction = retrievePrediction();
 	
-	return currentPrediction;
+	return cachedPrediction;
 }
 
-function runPrediction() {
+
+function predictRanking(teamstats) {
 	if (realMode) {
-		//TODO: plug in interface with Python model
+		//TODO: run ML model to predict the ranking for the team and return the rankings for the 2 teams in an object {team1:<int>, team2:<int>}
+		//teamstats is an object with the following attributes:
+		//{team:<string>, HAN:<string>, oppteam:<string>, scoreDiff:<int>, winLose:<string>, 
+		// OT:<boolean>, toDiff:<int>, yppDiff:<decimal>, PenYdDiff:<int>, topDiff:<int>, winPer:<decimal>}
+		//NOTE: some of the features, such as PreRank, RankDiff, etc. should be available in Python
+	}
+	else {
+		var rank1 = Math.floor(Math.random()*25)+1;
+		var rank2 = Math.floor(Math.random()*25)+1;
+		return {team1:rank1, team2:rank2} 
+	}
+
+}
+
+function retrievePrediction() {
+	if (realMode) {
+		//TODO: retrieve current top 25 predictions
+		//return an Array of 25 team names
+		//if the prediction is not available yet, return an empty array.
 	}
 	else {
 		var rankings = getRankings(getCurrentWeek());
@@ -44,53 +70,23 @@ function runPrediction() {
 
 }
 
+
 function getGameData() {
-	// var gamedata1 = {
-	//    team1: {id:"georgia", score: 24}
-	//    ,team2: {id:"alabama", score: 0}
-	//    ,time: "3rd - 4:34"
-	// }
-	// var gamedata2 = {
-	//   team1: {id:"lsu", score: 45}
-	//   ,team2: {id:"westernmi", score: 23}
-	//   ,time: "4th - 0:50"
-	// }
 
-	// var gamedata3 = {
-	// 	id: "gamedata3"
-	//    ,team1: {id:"houston", score: 45}
-	//    ,team2: {id:"kentucky", score: 23}
-	//    ,time: "1st - 2:34"
-	//  }
- 
-	var boxdata1 = { width:80, height:80};
-	
-	scoreboxdata = new Array();
-	// scoreboxdata.push({g:gamedata1, b:boxdata1});
-	// scoreboxdata.push({g:gamedata2, b:boxdata1});
-	// scoreboxdata.push({g:gamedata3, b:boxdata1});
+	if (realMode) {
+		//TODO: Retrieve game schedule for the week
+		//returned an array of objects that contains the following attributes: 
+		// {team1:{id:<string>, score:<int>}, team2:{id:<string>, score:<int>}, time:<string>}
+		// team1 is the home team, team2 is the away team; if both teams are away, put the higher rank team is team1
+		// id: the team name should match the list in data.js
+		// score: in-game score or the final score for completed games
+		// time: remaining game time; 0 for completed games
 
-	scoreboxdata.push({g:{team1: {id:"ballstate", score:0 }, team2:{id:"westernmi",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"ohio", score:0 }, team2:{id:"buffalo",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"northernil", score:0 }, team2:{id:"miamioh",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"coloradost", score:0 }, team2:{id:"utahst",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"oklahomast", score:0 }, team2:{id:"westvirginia",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"rutgers", score:0 }, team2:{id:"pennstate",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"alabama", score:0 }, team2:{id:"citadel",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"texas", score:0 }, team2:{id:"iowast",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"florida", score:0 }, team2:{id:"idaho",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"ucf", score:0 }, team2:{id:"cincinnati",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"lsu", score:0 }, team2:{id:"rice",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"maryland", score:0 }, team2:{id:"ohiostate",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"washingtonst", score:0 }, team2:{id:"arizona",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"washington", score:0 }, team2:{id:"oregonst",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"oklahoma", score:0 }, team2:{id:"kansas",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"georgia", score:0 }, team2:{id:"umass",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"clemson", score:0 }, team2:{id:"duke",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	scoreboxdata.push({g:{team1: {id:"syracuse", score:0 }, team2:{id:"notredame",score:0} , time: "1st - 5:00"}, b:boxdata1});
-	
-	
-	
-	return scoreboxdata;
+	}
+	else {
+		return sim_scoredata;
+	}	
+		
+		
 }
 

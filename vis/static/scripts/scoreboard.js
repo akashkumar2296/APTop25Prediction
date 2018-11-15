@@ -55,8 +55,8 @@ function drawScorebox3(svgarea, scoreboxdata, tile_size) {
     .attr("transform", function(d, i) { 
 		var colnum = i % num_col;
 		var rownum = Math.floor(i / num_col);
-		d.offsetx = colnum*d.b.width;
-		d.offsety = rownum*d.b.height;
+		d.offsetx = colnum*tile_size.w;
+		d.offsety = rownum*tile_size.h;
 		return "translate(" + d.offsetx + "," + d.offsety + ")"; })
 	.call(d3.drag()
   			.on("start", dragstarted_scorebox)
@@ -67,50 +67,50 @@ function drawScorebox3(svgarea, scoreboxdata, tile_size) {
 	scorebox.append("rect")
 	.attr("x", 1)
 	.attr("y", 1)
-	.attr("width", function(d) {return d.b.width*0.95})
-	.attr("height", function(d) {return d.b.height*0.95})
+	.attr("width", function(d) {return tile_size.w*0.95})
+	.attr("height", function(d) {return tile_size.h*0.95})
 	.style("fill", "lightgray")
 	.style("stroke", "#222")
 	.classed("scorebox", true);
 
 	scorebox.append("image")
-	.attr("xlink:href",  function(d) { d.team=1; return "/static/images/" + d.g.team1.id +".png"})
+	.attr("xlink:href",  function(d) { d.team=1; return "/static/images/" + d.team1.id +".png"})
 	.attr("team", 2)
 	.attr("x", function(d) { d.image1offsetx = 2; return d.image1offsetx;})
 	.attr("y", function(d) { d.image1offsety = 2; return d.image1offsety;})
-	.attr("width", function(d) {return d.b.width/3})
-	.attr("height", function(d) {return d.b.height/3})
+	.attr("width", function(d) {return tile_size.w/3})
+	.attr("height", function(d) {return tile_size.h/3})
 	.classed("team1", true)
 	.style("stroke", "black");
 
 	scorebox.append("image")
-	.attr("xlink:href",  function(d) { d.team=2; return "/static/images/" + d.g.team2.id +".png"})
+	.attr("xlink:href",  function(d) { d.team=2; return "/static/images/" + d.team2.id +".png"})
 	.attr("team", 2)
 	.attr("x", function(d) { d.image2offsetx = tile_size.w - 30; return d.image2offsetx;}) 
 	.attr("y", function(d) { d.image2offsety = 2; return d.image2offsety;})
-	.attr("width", function(d) {return d.b.width/3})
-	.attr("height", function(d) {return d.b.height/3})
+	.attr("width", function(d) {return tile_size.w/3})
+	.attr("height", function(d) {return tile_size.h/3})
 	.classed("team2", true)
 	.style("stroke", "black");
 
 	scorebox.append("text")
 	.attr("x", function(d) { d.score1offsetx = 2; return d.score1offsetx; })
 	.attr("y", function(d) { d.score1offsety = 45; return d.score1offsety;})
-	.text(function(d) {return d.g.team1.score})
+	.text(function(d) {return d.team1.score})
 	.classed("score", true)
 	.classed("team1", true);
 
 	scorebox.append("text")
-	.attr("x", function(d) { d.score2offsetx = d.b.width-20; return d.score2offsetx; })
+	.attr("x", function(d) { d.score2offsetx = tile_size.w-20; return d.score2offsetx; })
 	.attr("y", function(d) { d.score2offsety = 45; return d.score2offsety;})
-	.text(function(d) {return d.g.team2.score})
+	.text(function(d) {return d.team2.score})
 	.classed("score", true)
 	.classed("team2", true);
 
 	scorebox.append("text")
 	.attr("x", function(d) { d.timeoffsetx = 2; return d.timeoffsetx; })
 	.attr("y", function(d) { d.timeoffsety = 65; return d.timeoffsety;})
-	.text(function(d) {return d.g.time})
+	.text(function(d) {return d.time})
 	.classed("time", true);
 	return scorebox;
 }
