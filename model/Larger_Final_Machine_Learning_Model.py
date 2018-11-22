@@ -58,7 +58,9 @@ Missing_val_rows = Football_dataset[Football_dataset.isnull().any(axis = 1)]
 # than 40. The reason for this is that most "Rank" values are at 50, or near
 # 50. Because of how prominent those high rank values are, they bias eventual
 # rank predictions towards much higher values. Removing them leads to much
-# better model performance:
+# better model performance for top 25. Note that this may lead to less accurate
+# predictions for lower-ranked teams (teams not in the top 25), which is OK,
+# because our project's focus is not on those teams, but on the top 25:
 
 Football_dataset = Football_dataset[Football_dataset["Rank"] < 40]
 
@@ -381,7 +383,7 @@ Model_result = Model_reloaded.predict(In_prog_dataset).round()
 Current_week = 12
 
 # Second, output the actual and predicted AP rankings for all teams previously
-# ranked in the top-25 in the "In_prog_dataset" dataset (refer to "PrevRank"
+# ranked in the top 25 in the "In_prog_dataset" dataset (refer to "PrevRank"
 # feature). Note that integer rankings are listed in the order that top-25 
 # teams appear in the dataset. That order is as follows: Alabama, Ohio State,
 # Florida, Utah, Notre Dame, Syracuse, Georgia, Michigan, Clemson, Oklahoma,
