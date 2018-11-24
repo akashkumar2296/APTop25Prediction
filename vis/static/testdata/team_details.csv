@@ -1,0 +1,303 @@
+Year,Team,Week,PrevRank,RankDiff,Conference,H/A/N,Fav/Und,OppTeam,Opp Conf,ScoreDiff,WinLose,OT?,TODiff,YPPDiff,PenYdDiff,TOPDiff,GameStatus,WinPer,TimeRem,Rank
+2018,Alabama,1,1,-49,SEC,N,F,Louisville,ACC,37,Win,N,-1,7.3,18,138,Completed,100.000,0.0,1
+2018,Alabama,2,1,-42,SEC,H,F,Arkansas State,Sun Belt,50,Win,N,0,6.300672834,-49,208,Completed,100.000,0.0,1
+2018,Alabama,3,1,-36,SEC,A,F,Mississippi,SEC,55,Win,N,-1,6.725181598,-7,520,Completed,100.000,0.0,1
+2018,Alabama,4,1,-21,SEC,H,F,Texas A&M,SEC,22,Win,N,-2,7.117424242,32,-312,Completed,100.000,0.0,1
+2018,Alabama,5,1,-49,SEC,H,F,La.-Lafayette,Sun Belt,42,Win,N,-2,16.28448276,-15,8,Completed,100.000,0.0,1
+2018,Alabama,6,1,-49,SEC,A,F,Arkansas,SEC,34,Win,N,-3,16.12910798,11,-352,Completed,100.000,0.0,1
+2018,Alabama,7,1,-49,SEC,H,F,Missouri,SEC,29,Win,N,-2,9.191256831,7,274,Completed,100.000,0.0,1
+2018,Alabama,8,1,-49,SEC,A,F,Tennessee,SEC,37,Win,N,0,5.527840909,-23,306,Completed,100.000,0.0,1
+2018,Appalachian State,5,50,0,Sun Belt,H,F,S. Alabama,Sun Belt,45,Win,N,1,3.920588235,-46,-136,Completed,75.000,0.0,40
+2018,Appalachian State,6,40,-10,Sun Belt,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,75.000,0.0,31
+2018,Appalachian State,7,31,-19,Sun Belt,A,F,Arkansas State,Sun Belt,26,Win,N,-3,1.235772358,-15,-176,Completed,80.000,0.0,29
+2018,Appalachian State,8,29,-21,Sun Belt,H,F,La.-Lafayette,Sun Belt,14,Win,N,0,0.476470588,-10,316,Completed,83.333,0.0,25
+2018,Arizona State,2,50,35,PAC 12,H,U,Michigan State,Big 10,3,Win,N,0,2.204545455,-42,-250,Completed,100.000,0.0,23
+2018,Arizona State,3,23,-27,PAC 12,A,F,San Diego State,MWC,-7,Lose,N,-1,0.010714286,-46,-730,Completed,66.667,0.0,35
+2018,Auburn,1,9,3,SEC,N,F,Washington,PAC 12,5,Win,N,-2,1.46025641,16,120,Completed,100.000,0.0,7
+2018,Auburn,2,7,-43,SEC,H,F,Alabama State,FCS,54,Win,N,,,,,Completed,100.000,0.0,7
+2018,Auburn,3,7,-5,SEC,H,F,LSU,SEC,-1,Lose,N,2,-2.144588745,20,-608,Completed,66.667,0.0,9
+2018,Auburn,4,9,-41,SEC,H,F,Arkansas,SEC,31,Win,N,-2,1.948051948,-17,-298,Completed,75.000,0.0,10
+2018,Auburn,5,10,-40,SEC,H,F,Southern Miss,CUSA,11,Win,N,-2,3.424242424,32,78,Completed,80.000,0.0,8
+2018,Auburn,6,8,-31,SEC,A,F,Mississippi State,SEC,-14,Lose,N,1,1.093718843,-5,-1426,Completed,66.667,0.0,21
+2018,Auburn,8,50,0,SEC,A,F,Mississippi,SEC,15,Win,N,0,4.575052854,45,-22,Completed,62.500,0.0,36
+2018,Boise State,1,22,-19,MWC,A,F,Troy,Sun Belt,36,Win,N,-3,5.866883117,2,-542,Completed,100.000,0.0,20
+2018,Boise State,2,20,-30,MWC,H,F,Connecticut,AAC,55,Win,N,-1,8.471014493,27,962,Completed,100.000,0.0,17
+2018,Boise State,3,17,-7,MWC,A,F,Oklahoma State,Big 12,-23,Lose,N,1,-4.352490421,15,548,Completed,66.667,0.0,27
+2018,Boise State,4,27,-23,MWC,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,66.667,0.0,27
+2018,Boise State,5,27,-23,MWC,A,F,Wyoming,MWC,20,Win,N,-1,2.123255814,12,1226,Completed,75.000,0.0,26
+2018,Boston College,1,34,-16,ACC,H,F,Massachussetts,Independent,34,Win,N,-3,7.150359315,30,180,Completed,100.000,0.0,28
+2018,Boston College,2,28,-22,ACC,H,F,Holy Cross,FCS,48,Win,N,,,,,Completed,100.000,0.0,28
+2018,Boston College,3,28,-22,ACC,A,F,Wake Forest,ACC,7,Win,N,-1,7.283809524,0,-54,Completed,100.000,0.0,23
+2018,Boston College,5,50,0,ACC,H,F,Temple,AAC,10,Win,N,-1,-1.227305737,-16,474,Completed,80.000,0.0,37
+2018,Boston College,8,50,0,ACC,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,71.429,0.0,37
+2018,BYU,1,50,19,Independent,A,U,Arizona,PAC 12,5,Win,N,0,2.739648033,68,786,Completed,100.000,0.0,39
+2018,BYU,3,50,44,Independent,A,U,Wisconsin,Big 10,3,Win,N,-1,-0.33190447,3,-520,Completed,66.667,0.0,25
+2018,BYU,4,25,-25,Independent,H,F,McNeese State,FCS,27,Win,N,,,,,Completed,75.000,0.0,20
+2018,BYU,5,20,9,Independent,A,U,Washington,PAC 12,-28,Lose,N,0,-7.120816327,10,-134,Completed,60.000,0.0,38
+2018,California,3,50,0,PAC 12,H,F,Idaho State,FCS,22,Win,N,,,,,Completed,100.000,0.0,30
+2018,California,4,30,-20,PAC 12,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,100.000,0.0,24
+2018,California,5,24,5,PAC 12,H,U,Oregon,PAC 12,-18,Lose,N,4,-4.296717172,-42,82,Completed,75.000,0.0,34
+2018,Cincinnati,4,50,0,AAC,H,F,Ohio,MAC,4,Win,N,-1,3.116487455,65,-644,Completed,100.000,0.0,38
+2018,Cincinnati,5,38,-12,AAC,A,F,Connecticut,AAC,42,Win,N,0,7.533405172,90,830,Completed,100.000,0.0,29
+2018,Cincinnati,6,29,-21,AAC,H,F,Tulane,AAC,14,Win,N,2,3.104927536,-25,306,Completed,100.000,0.0,25
+2018,Cincinnati,7,25,-25,AAC,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,100.000,0.0,20
+2018,Cincinnati,8,20,-30,AAC,A,U,Temple,AAC,-7,Lose,Y,0,-1.80335097,5,158,Completed,85.714,0.0,35
+2018,Clemson,1,2,-48,ACC,H,F,Furman,FCS,41,Win,N,,,,,Completed,100.000,0.0,2
+2018,Clemson,2,2,-27,ACC,A,F,Texas A&M,SEC,2,Win,N,-2,4.078703704,17,-464,Completed,100.000,0.0,2
+2018,Clemson,3,2,-48,ACC,H,F,Georgia Southern,Sun Belt,31,Win,N,2,6.533498759,45,-214,Completed,100.000,0.0,3
+2018,Clemson,4,3,-47,ACC,A,F,Georgia Tech,ACC,28,Win,N,1,4.561458333,38,-730,Completed,100.000,0.0,3
+2018,Clemson,5,3,-33,ACC,H,F,Syracuse,ACC,4,Win,N,2,1.427174472,-15,342,Completed,100.000,0.0,4
+2018,Clemson,6,4,-46,ACC,A,F,Wake Forest,ACC,60,Win,N,0,4.374358974,-27,-36,Completed,100.000,0.0,4
+2018,Clemson,7,4,-46,ACC,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,100.000,0.0,3
+2018,Clemson,8,3,-13,ACC,H,F,N.C. State,ACC,34,Win,N,-2,3.483830846,18,-72,Completed,100.000,0.0,2
+2018,Colorado,5,26,-24,PAC 12,H,F,UCLA,PAC 12,22,Win,N,0,5.338624339,-7,574,Completed,100.000,0.0,21
+2018,Colorado,6,21,-20,PAC 12,H,F,Arizona State,PAC 12,7,Win,N,0,3.500797448,25,414,Completed,100.000,0.0,19
+2018,Duke,2,50,0,ACC,A,U,Northwesern,Big 10,14,Win,N,-2,4.170454545,22,-178,Completed,100.000,0.0,34
+2018,Duke,3,34,-16,ACC,A,U,Baylor,Big 12,13,Win,N,-2,0.466666667,-44,-394,Completed,100.000,0.0,28
+2018,Duke,4,28,-22,ACC,H,F,North Carolina Central,FCS,42,Win,N,,,,,Completed,100.000,0.0,22
+2018,Duke,7,50,0,ACC,A,U,Georgia Tech,ACC,14,Win,N,0,3.148616971,-3,-760,Completed,83.333,0.0,34
+2018,Florida,1,27,-23,SEC,H,F,Charleston Southern,FCS,47,Win,N,,,,,Completed,100.000,0.0,25
+2018,Florida,4,50,0,SEC,A,F,Tennessee,SEC,26,Win,N,-5,5.181878748,21,-530,Completed,75.000,0.0,34
+2018,Florida,5,34,11,SEC,A,U,Mississippi State,SEC,7,Win,N,1,3.985991379,75,454,Completed,80.000,0.0,22
+2018,Florida,6,22,17,SEC,H,U,LSU,SEC,8,Win,N,-2,1.339047619,41,-48,Completed,83.333,0.0,14
+2018,Florida,7,14,-36,SEC,A,F,Vanderbilt,SEC,10,Win,N,2,4,35,748,Completed,85.714,0.0,11
+2018,Florida State,1,19,-1,ACC,H,F,Virginia Tech,ACC,-21,Lose,N,5,-2.771062271,-19,-464,Completed,0.000,0.0,34
+2018,Fresno State,7,50,0,MWC,H,F,Wyoming,MWC,24,Win,N,-1,5.404233871,23,416,Completed,83.333,0.0,36
+2018,Fresno State,8,36,-14,MWC,A,F,New Mexico,MWC,31,Win,N,-1,5.025641026,-75,924,Completed,85.714,0.0,29
+2018,Georgia,1,3,-47,SEC,H,F,Austin Peay,FCS,45,Win,N,,,,,Completed,100.000,0.0,3
+2018,Georgia,2,3,-21,SEC,A,F,South Carolina,SEC,24,Win,N,-1,5.690402477,7,686,Completed,100.000,0.0,3
+2018,Georgia,3,3,-47,SEC,H,F,MTSU,CUSA,42,Win,N,-2,6.383753501,19,-220,Completed,100.000,0.0,2
+2018,Georgia,4,2,-34,SEC,A,F,Missouri,SEC,14,Win,N,-2,6.680818414,36,118,Completed,100.000,0.0,2
+2018,Georgia,5,2,-48,SEC,H,F,Tennessee,SEC,26,Win,N,-1,3.373188406,15,894,Completed,100.000,0.0,2
+2018,Georgia,6,2,-48,SEC,H,F,Vanderbilt,SEC,28,Win,N,0,5.559322034,46,-126,Completed,100.000,0.0,2
+2018,Georgia,7,2,-11,SEC,A,F,LSU,SEC,-20,Lose,N,4,-1.635416667,1,-442,Completed,85.714,0.0,8
+2018,Georgia,8,8,-42,SEC,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,85.714,0.0,7
+2018,Hawaii,1,50,0,MWC,H,U,Navy,AAC,18,Win,N,1,3.751920123,-13,74,Completed,100.000,0.0,40
+2018,Hawaii,2,40,-10,MWC,H,F,Rice,CUSA,14,Win,N,-2,3.472222222,6,-350,Completed,100.000,0.0,36
+2018,Hawaii,6,43,-7,MWC,H,U,Wyoming,MWC,4,Win,N,2,0.411140584,-20,472,Completed,85.714,0.0,35
+2018,Houston,1,38,-12,AAC,A,F,Rice,CUSA,18,Win,N,1,7.573809524,-19,-1194,Completed,100.000,0.0,35
+2018,Houston,2,35,-15,AAC,H,F,Arizona,PAC 12,27,Win,N,-2,1.04,-29,-642,Completed,100.000,0.0,29
+2018,Houston,7,50,0,AAC,A,F,East Carolina,AAC,22,Win,N,-4,4.477963526,46,-386,Completed,83.333,0.0,37
+2018,Houston,8,37,-13,AAC,A,F,Navy,AAC,13,Win,N,1,4.162914321,-12,-1506,Completed,85.714,0.0,32
+2018,Iowa,2,41,3,Big 10,H,F,Iowa State,Big 12,10,Win,N,-1,2.571428571,-10,190,Completed,100.000,0.0,32
+2018,Iowa,3,32,-18,Big 10,H,F,Northern Iowa,FCS,24,Win,N,,,,,Completed,100.000,0.0,26
+2018,Iowa,4,26,8,Big 10,H,U,Wisconsin,Big 10,-11,Lose,N,3,-1.836700337,-63,-626,Completed,75.000,0.0,32
+2018,Iowa,5,32,-18,Big 10,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,75.000,0.0,30
+2018,Iowa,6,30,-20,Big 10,A,F,Minnesota,Big 10,17,Win,N,-2,3.275162648,35,394,Completed,80.000,0.0,26
+2018,Iowa,7,26,-24,Big 10,A,F,Indiana,Big 10,26,Win,N,-1,4.771596563,11,380,Completed,83.333,0.0,19
+2018,Iowa,8,19,-19,Big 10,H,F,Maryland,Big 10,23,Win,N,-1,0.634615385,-46,1310,Completed,85.714,0.0,18
+2018,Iowa State,1,37,-13,Big 12,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,na,0.0,38
+2018,Kentucky,2,50,25,SEC,A,U,Florida,SEC,11,Win,N,0,4.064365672,59,140,Completed,100.000,0.0,33
+2018,Kentucky,3,33,-17,SEC,H,F,Murray State,FCS,38,Win,N,,,,,Completed,100.000,0.0,31
+2018,Kentucky,4,31,17,SEC,H,U,Mississippi State,SEC,21,Win,N,0,1.721428571,-97,114,Completed,100.000,0.0,17
+2018,Kentucky,5,17,-16,SEC,H,P,South Carolina,SEC,14,Win,N,-3,1.947826087,21,568,Completed,100.000,0.0,13
+2018,Kentucky,6,13,-18,SEC,A,U,Texas A&M,SEC,-6,Lose,Y,-2,-3.973333333,27,-596,Completed,83.333,0.0,18
+2018,Kentucky,7,18,-32,SEC,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,83.333,0.0,14
+2018,Kentucky,8,14,-36,SEC,H,F,Vanderbilt,SEC,7,Win,N,0,-3.259259259,10,134,Completed,85.714,0.0,12
+2018,LSU,1,25,17,SEC,N,U,"Miami, FL",ACC,16,Win,N,-2,0.876811594,-23,218,Completed,100.000,0.0,11
+2018,LSU,2,11,-39,SEC,H,F,Southeastern Louisiana,FCS,31,Win,N,,,,,Completed,100.000,0.0,12
+2018,LSU,3,12,5,SEC,A,U,Auburn,SEC,1,Win,N,-2,2.144588745,-20,608,Completed,100.000,0.0,6
+2018,LSU,4,6,-44,SEC,H,F,La. Tech,CUSA,17,Win,N,-1,1.334586466,-3,332,Completed,100.000,0.0,5
+2018,LSU,5,5,-36,SEC,H,F,Mississippi,SEC,29,Win,N,1,6.926376812,-127,634,Completed,100.000,0.0,5
+2018,LSU,6,5,-17,SEC,A,F,Florida,SEC,-8,Lose,N,2,-1.339047619,-41,48,Completed,83.333,0.0,13
+2018,LSU,7,13,11,SEC,H,U,Georgia,SEC,20,Win,N,-4,1.635416667,-1,442,Completed,85.714,0.0,5
+2018,LSU,8,5,-17,SEC,H,F,Mississippi State,SEC,16,Win,N,-3,0.344847775,8,212,Completed,87.500,0.0,4
+2018,Maryland,1,50,27,Big 10,H,F,Texas,Big 12,5,Win,N,-3,2.364705882,-58,332,Completed,100.000,0.0,31
+2018,Maryland,2,31,-19,Big 10,A,F,Bowling Green,MAC,31,Win,N,0,4.689772727,73,296,Completed,100.000,0.0,30
+2018,Maryland,5,44,-6,Big 10,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,75.000,0.0,35
+2018,Maryland,7,50,0,Big 10,H,F,Rutgers,Big 10,27,Win,N,-4,1.362903226,62,236,Completed,66.667,0.0,38
+2018,Memphis,1,39,-11,AAC,H,F,Mercer,FCS,52,Win,N,,,,,Completed,100.000,0.0,36
+2018,"Miami, FL",1,8,-17,ACC,N,F,LSU,SEC,-16,Lose,N,2,-0.876811594,23,-218,Completed,0.000,0.0,22
+2018,"Miami, FL",2,22,-28,ACC,H,F,Savannah State,FCS,77,Win,N,,,,,Completed,50.000,0.0,21
+2018,"Miami, FL",3,21,-29,ACC,A,F,Toledo,MAC,25,Win,N,-1,3.252026529,-38,658,Completed,66.667,0.0,21
+2018,"Miami, FL",4,21,-29,ACC,H,F,FIU,CUSA,14,Win,N,1,4.679708223,37,818,Completed,75.000,0.0,16
+2018,"Miami, FL",5,16,-34,ACC,H,F,North Carolina,ACC,37,Win,N,-4,6.03,25,-384,Completed,80.000,0.0,17
+2018,"Miami, FL",6,17,-33,ACC,H,F,Florida State,ACC,1,Win,N,-1,3.298076923,-30,542,Completed,83.333,0.0,16
+2018,"Miami, FL",7,16,-34,ACC,A,F,Virginia,ACC,-3,Lose,N,0,1.463875205,11,-220,Completed,71.429,0.0,31
+2018,"Miami, FL",8,31,-19,ACC,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,71.429,0.0,30
+2018,Michigan,1,14,2,Big 10,A,U,Notre Dame,Independent,-7,Lose,N,1,-3.277997365,12,186,Completed,0.000,0.0,21
+2018,Michigan,3,19,-31,Big 10,H,F,SMU,AAC,25,Win,N,0,8.258974359,77,376,Completed,66.667,0.0,19
+2018,Michigan,4,19,-31,Big 10,H,F,Nebraska,Big 10,46,Win,N,-1,4.200716846,-2,658,Completed,75.000,0.0,14
+2018,Michigan,5,14,-36,Big 10,A,F,Northwestern,Big 10,3,Win,N,0,4.96031746,75,562,Completed,80.000,0.0,15
+2018,Michigan,6,15,-20,Big 10,H,F,Maryland,Big 10,21,Win,N,0,6.1,-55,678,Completed,83.333,0.0,12
+2018,Michigan,7,12,-3,Big 10,H,F,Wisconsin,Big 10,25,Win,N,-2,0.129251701,-15,842,Completed,85.714,0.0,6
+2018,Michigan,8,6,-18,Big 10,A,F,Michigan State,Big 10,14,Win,N,1,6.636862745,59,1326,Completed,87.500,0.0,5
+2018,Michigan State,1,11,-39,Big 10,H,F,Utah State,MWC,7,Win,N,0,3.711462451,13,928,Completed,100.000,0.0,15
+2018,Michigan State,2,15,-35,Big 10,A,F,Arizona State,PAC 12,-3,Lose,N,0,-2.204545455,42,250,Completed,50.000,0.0,25
+2018,Michigan State,3,25,-25,Big 10,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,50.000,0.0,24
+2018,Michigan State,4,24,-26,Big 10,A,F,Indiana,Big 10,14,Win,N,2,4.564102564,-13,166,Completed,66.667,0.0,21
+2018,Michigan State,5,21,-29,Big 10,H,F,C. Michigan,MAC,11,Win,N,-1,3.101754386,-9,918,Completed,75.000,0.0,20
+2018,Michigan State,7,50,42,Big 10,A,U,Penn State,Big 10,4,Win,N,0,-0.637087264,-21,504,Completed,66.667,0.0,24
+2018,Michigan State,8,24,18,Big 10,H,U,Michigan,Big 10,-14,Lose,N,-1,-6.636862745,-59,-1326,Completed,57.143,0.0,34
+2018,Mississippi,1,50,0,SEC,N,P,Texas Tech,Big 12,20,Win,N,1,5.384210526,-31,-770,Completed,100.000,0.0,32
+2018,Mississippi,2,32,-18,SEC,H,F,Southern Illinois,FCS,35,Win,N,,,,,Completed,100.000,0.0,37
+2018,Mississippi State,1,18,-32,SEC,H,F,Stephen F. Austin,FCS,57,Win,N,,,,,Completed,100.000,0.0,18
+2018,Mississippi State,2,18,-24,SEC,A,F,Kansas State,Big 12,21,Win,N,0,1.900132275,69,68,Completed,100.000,0.0,16
+2018,Mississippi State,3,16,-34,SEC,H,F,La.-Lafayette,Sun Belt,46,Win,N,0,6.333333333,-10,358,Completed,100.000,0.0,14
+2018,Mississippi State,4,14,-17,SEC,A,F,Kentucky,SEC,-21,Lose,N,0,-1.721428571,97,-114,Completed,75.000,0.0,23
+2018,Mississippi State,5,23,-11,SEC,H,F,Florida,SEC,-7,Lose,N,-1,-3.985991379,-75,-454,Completed,60.000,0.0,39
+2018,Mississippi State,6,39,31,SEC,H,U,Auburn,SEC,14,Win,N,-1,-1.093718843,5,1426,Completed,66.667,0.0,24
+2018,Mississippi State,7,24,-26,SEC,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,66.667,0.0,22
+2018,Mississippi State,8,22,17,SEC,A,U,LSU,SEC,-16,Lose,N,3,-0.344847775,-8,-212,Completed,57.143,0.0,38
+2018,Missouri,3,50,0,SEC,A,F,Purdue,Big 10,3,Win,N,0,0.073042909,-38,232,Completed,100.000,0.0,36
+2018,Missouri,5,42,-8,SEC,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,75.000,0.0,36
+2018,N.C. State,1,32,-18,ACC,H,F,James Madison,FCS,11,Win,N,,,,,Completed,100.000,0.0,33
+2018,N.C. State,2,33,-17,ACC,H,F,Georgia State,Sun Belt,34,Win,N,0,5.553846154,4,64,Completed,100.000,0.0,35
+2018,N.C. State,3,35,-15,ACC,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,100.000,0.0,34
+2018,N.C. State,4,34,-16,ACC,A,F,Marshall,CUSA,17,Win,N,-2,4.440384615,5,560,Completed,100.000,0.0,35
+2018,N.C. State,5,35,-15,ACC,H,F,Virginia,ACC,14,Win,N,-2,2.546875,18,268,Completed,100.000,0.0,23
+2018,N.C. State,6,23,-14,ACC,H,F,Boston College,ACC,5,Win,N,3,2.698823529,-32,1380,Completed,100.000,0.0,20
+2018,N.C. State,7,20,-30,ACC,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,100.000,0.0,16
+2018,N.C. State,8,16,13,ACC,A,U,Clemson,ACC,-34,Lose,N,2,-3.483830846,-18,72,Completed,83.333,0.0,22
+2018,North Texas,3,50,0,CUSA,A,U,Arkansas,SEC,27,Win,N,-5,1.745059289,32,8,Completed,100.000,0.0,39
+2018,North Texas,4,39,-11,CUSA,A,F,Liberty,Independent,40,Win,N,-1,2.656729901,0,26,Completed,100.000,0.0,39
+2018,Northwestern,1,35,-15,Big 10,A,U,Purdue,Big 10,4,Win,N,-3,-0.296535973,-39,382,Completed,100.000,0.0,30
+2018,Notre Dame,1,12,-2,Independent,H,F,Michigan,Big 10,7,Win,N,-1,3.277997365,-12,-186,Completed,100.000,0.0,8
+2018,Notre Dame,2,8,-42,Independent,H,F,Ball State,MAC,8,Win,N,1,5.982707017,10,-524,Completed,100.000,0.0,8
+2018,Notre Dame,3,8,-42,Independent,H,F,Vanderbilt,SEC,5,Win,N,-3,-0.807692308,3,96,Completed,100.000,0.0,8
+2018,Notre Dame,4,8,-42,Independent,A,F,Wake Forest,ACC,29,Win,N,0,4.701690821,14,-478,Completed,100.000,0.0,8
+2018,Notre Dame,5,8,1,Independent,H,F,Stanford,PAC 12,21,Win,N,-1,3.934046346,17,526,Completed,100.000,0.0,6
+2018,Notre Dame,6,6,-18,Independent,A,F,Virginia Tech,ACC,22,Win,N,-1,2.554621849,-22,-324,Completed,100.000,0.0,5
+2018,Notre Dame,7,5,-45,Independent,H,F,Pittsburgh,ACC,5,Win,N,2,4.216666667,-45,-414,Completed,100.000,0.0,4
+2018,Notre Dame,8,4,-46,Independent,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,100.000,0.0,3
+2018,Ohio State,1,5,-45,Big 10,H,F,Oregon State,PAC 12,46,Win,N,0,3.954248366,1,152,Completed,100.000,0.0,4
+2018,Ohio State,2,4,-46,Big 10,H,F,Rutgers,Big 10,49,Win,N,-2,8.530551416,48,194,Completed,100.000,0.0,4
+2018,Ohio State,3,4,-11,Big 10,N,F,TCU,Big 12,12,Win,N,-3,2.328947368,-1,136,Completed,100.000,0.0,4
+2018,Ohio State,4,4,-46,Big 10,H,F,Tulane,AAC,43,Win,N,0,6.612522686,34,-120,Completed,100.000,0.0,4
+2018,Ohio State,5,4,-5,Big 10,A,F,Penn State,Big 10,1,Win,N,0,0.449392713,41,-198,Completed,100.000,0.0,3
+2018,Ohio State,6,3,-47,Big 10,H,F,Indiana,Big 10,23,Win,N,1,4.540909091,47,804,Completed,100.000,0.0,3
+2018,Ohio State,7,3,-47,Big 10,H,F,Minnesota,Big 10,16,Win,N,-3,2.292207792,-24,210,Completed,100.000,0.0,2
+2018,Ohio State,8,2,-48,Big 10,A,F,Purdue,Big 10,-29,Lose,N,1,-3.219269103,-9,154,Completed,87.500,0.0,11
+2018,Oklahoma,1,7,-23,Big 12,H,F,FAU,CUSA,49,Win,N,-1,10.14336075,22,-90,Completed,100.000,0.0,6
+2018,Oklahoma,2,6,-44,Big 12,H,F,UCLA,PAC 12,28,Win,N,1,3.703383459,-37,-152,Completed,100.000,0.0,5
+2018,Oklahoma,3,5,-45,Big 12,A,F,Iowa State,Big 12,10,Win,N,0,5.123076923,25,502,Completed,100.000,0.0,5
+2018,Oklahoma,4,5,-45,Big 12,H,F,Army,Independent,7,Win,Y,-1,6.643678161,-30,-1762,Completed,100.000,0.0,6
+2018,Oklahoma,5,6,-44,Big 12,H,F,Baylor,Big 12,33,Win,N,-1,13.90142058,5,-880,Completed,100.000,0.0,7
+2018,Oklahoma,6,7,-12,Big 12,N,F,Texas,Big 12,-3,Lose,N,3,0.415657036,30,-460,Completed,83.333,0.0,11
+2018,Oklahoma,7,11,-39,Big 12,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,83.333,0.0,9
+2018,Oklahoma,8,9,-41,Big 12,A,F,TCU,Big 12,25,Win,N,-1,3.52,50,848,Completed,85.714,0.0,8
+2018,Oklahoma State,1,29,-21,Big 12,H,F,Missouri State,FCS,41,Win,N,,,,,Completed,100.000,0.0,27
+2018,Oklahoma State,2,27,-23,Big 12,H,F,S. Alabama,Sun Belt,42,Win,N,2,7.771629779,27,-244,Completed,100.000,0.0,24
+2018,Oklahoma State,3,24,7,Big 12,H,U,Boise State,MWC,23,Win,N,-1,4.352490421,-15,-548,Completed,100.000,0.0,15
+2018,Oklahoma State,4,15,-35,Big 12,H,F,Texas Tech,Big 12,-24,Lose,N,0,-2.404628331,48,-1354,Completed,75.000,0.0,30
+2018,Oklahoma State,5,30,-20,Big 12,A,F,Kansas,Big 12,20,Win,N,0,9.85,49,160,Completed,80.000,0.0,25
+2018,Oregon,1,24,-26,PAC 12,H,F,Bowling Green,MAC,34,Win,N,0,6.859982714,-15,-966,Completed,100.000,0.0,23
+2018,Oregon,2,23,-27,PAC 12,H,F,Portland State,FCS,48,Win,N,,,,,Completed,100.000,0.0,20
+2018,Oregon,3,20,-30,PAC 12,H,F,San Jose State,MWC,13,Win,N,0,4.293478261,34,72,Completed,100.000,0.0,20
+2018,Oregon,4,20,13,PAC 12,H,U,Stanford,PAC 12,-7,Lose,Y,3,-6.186679174,9,684,Completed,75.000,0.0,19
+2018,Oregon,5,19,-5,PAC 12,A,F,California,PAC 12,18,Win,N,-4,4.296717172,42,-82,Completed,80.000,0.0,18
+2018,Oregon,6,18,-32,PAC 12,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,80.000,0.0,17
+2018,Oregon,7,17,-33,PAC 12,H,U,Washington  ,PAC 12,3,Win,Y,0,0.069642857,32,-74,Completed,83.333,0.0,12
+2018,Penn State,1,10,-40,Big 10,H,F,Appalachian State,Sun Belt,7,Win,Y,-1,0.454678363,-90,-296,Completed,100.000,0.0,13
+2018,Penn State,2,13,-37,Big 10,A,F,Pittsburgh,ACC,45,Win,N,-1,1.488479263,-71,-524,Completed,100.000,0.0,11
+2018,Penn State,3,11,-39,Big 10,H,F,Kent State,MAC,53,Win,N,1,11.92987013,26,-196,Completed,100.000,0.0,10
+2018,Penn State,4,10,-40,Big 10,A,F,Illinois,Big 10,39,Win,N,0,4.792105263,-9,-10,Completed,100.000,0.0,9
+2018,Penn State,5,9,5,Big 10,H,U,Ohio State,Big 10,-1,Lose,N,0,-0.449392713,-41,198,Completed,80.000,0.0,11
+2018,Penn State,6,11,-39,Big 10,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,80.000,0.0,8
+2018,Penn State,7,8,-42,Big 10,H,F,Michigan State,Big 10,-4,Lose,N,0,0.637087264,21,-504,Completed,66.667,0.0,18
+2018,Penn State,8,18,-32,Big 10,A,F,Indiana,Big 10,5,Win,N,-1,1.027567568,-15,-476,Completed,71.429,0.0,17
+2018,Purdue,8,50,48,Big 10,H,U,Ohio State,Big 10,29,Win,N,-1,3.219269103,9,-154,Completed,57.143,0.0,33
+2018,San Diego State,3,50,27,MWC,H,U,Arizona State,PAC 12,7,Win,N,1,-0.010714286,46,730,Completed,66.667,0.0,38
+2018,San Diego State,6,44,18,MWC,A,U,Boise State,MWC,6,Win,N,-1,4.670833333,3,104,Completed,80.000,0.0,29
+2018,San Diego State,7,29,-21,MWC,H,F,Air Force,MWC,4,Win,N,0,4.461176471,-1,-538,Completed,83.333,0.0,27
+2018,San Diego State,8,27,-23,MWC,H,F,San Jose State,MWC,3,Win,N,0,3.663252241,15,34,Completed,85.714,0.0,28
+2018,South Carolina,1,26,-24,SEC,H,F,Coastal Carolina,Sun Belt,34,Win,N,-1,4.060714286,63,4,Completed,100.000,0.0,24
+2018,South Carolina,2,24,21,SEC,H,U,Georgia,SEC,-24,Lose,N,1,-5.690402477,-7,-686,Completed,50.000,0.0,40
+2018,South Carolina,3,40,-10,SEC,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,50.000,0.0,40
+2018,South Carolina,4,40,-10,SEC,A,F,Vanderbilt,SEC,23,Win,N,1,5.431017613,33,-32,Completed,66.667,0.0,33
+2018,South Carolina,6,50,14,SEC,H,U,Missouri,SEC,3,Win,N,-1,1.138675958,0,-56,Completed,60.000,0.0,34
+2018,South Florida,2,50,0,AAC,H,U,Georgia Tech,ACC,11,Win,N,-2,-1.255913978,-44,-664,Completed,100.000,0.0,39
+2018,South Florida,3,39,-11,AAC,A,F,Illinois,Big 10,6,Win,N,1,5.464873418,59,-320,Completed,100.000,0.0,32
+2018,South Florida,4,32,-18,AAC,H,F,East Carolina,AAC,7,Win,N,0,4.758333333,23,-980,Completed,100.000,0.0,29
+2018,South Florida,5,29,-21,AAC,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,100.000,0.0,27
+2018,South Florida,6,27,-23,AAC,A,F,Massachussetts,Independent,16,Win,N,-3,3.057170543,20,-214,Completed,100.000,0.0,23
+2018,South Florida,7,23,-27,AAC,A,F,Tulsa,AAC,1,Win,N,1,1.653571429,-11,90,Completed,100.000,0.0,21
+2018,South Florida,8,21,-29,AAC,H,F,Connecticut,AAC,8,Win,N,2,3.14484127,65,-518,Completed,100.000,0.0,21
+2018,Southern Cal,1,15,-35,PAC 12,H,F,UNLV,MWC,22,Win,N,-1,2.271428571,23,132,Completed,100.000,0.0,17
+2018,Southern Cal,2,17,7,PAC 12,A,U,Stanford,PAC 12,-14,Lose,N,3,-1.98776908,-15,-86,Completed,50.000,0.0,22
+2018,Southern Cal,7,50,0,PAC 12,H,F,Colorado  ,PAC 12,11,Win,N,0,4.845238095,42,-582,Completed,66.667,0.0,28
+2018,Stanford,1,13,-37,PAC 12,H,F,San Diego State,MWC,21,Win,N,0,5.651985112,-105,140,Completed,100.000,0.0,10
+2018,Stanford,2,10,-7,PAC 12,H,F,Southern Cal,PAC 12,14,Win,N,-3,1.98776908,15,86,Completed,100.000,0.0,9
+2018,Stanford,3,9,-41,PAC 12,H,F,California-Davis,FCS,20,Win,N,,,,,Completed,100.000,0.0,7
+2018,Stanford,4,7,-13,PAC 12,A,F,Oregon,PAC 12,7,Win,Y,-3,6.186679174,-9,-684,Completed,100.000,0.0,7
+2018,Stanford,5,7,-1,PAC 12,A,U,Notre Dame,Independent,-21,Lose,N,1,-3.934046346,-17,-526,Completed,80.000,0.0,14
+2018,Stanford,6,14,-36,PAC 12,H,F,Utah,PAC 12,-19,Lose,N,4,-3.433333333,-45,-160,Completed,66.667,0.0,27
+2018,Stanford,7,27,-23,PAC 12,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,66.667,0.0,26
+2018,Stanford,8,26,-24,PAC 12,A,F,Arizona State,PAC 12,7,Win,N,-3,1.539046653,-26,994,Completed,71.429,0.0,24
+2018,Syracuse,4,41,-9,ACC,H,F,Connecticut,AAC,30,Win,N,-2,3.409926471,58,-298,Completed,100.000,0.0,36
+2018,Syracuse,5,36,33,ACC,A,U,Clemson,ACC,-4,Lose,N,-2,-1.427174472,15,-342,Completed,80.000,0.0,28
+2018,TCU,1,16,-34,Big 12,H,F,Southern,FCS,48,Win,N,,,,,Completed,100.000,0.0,16
+2018,TCU,2,16,-34,Big 12,A,F,SMU,AAC,30,Win,N,1,1.853174603,-33,468,Completed,100.000,0.0,15
+2018,TCU,3,15,11,Big 12,N,U,Ohio State,Big 10,-12,Lose,N,3,-2.328947368,1,-136,Completed,66.667,0.0,17
+2018,TCU,4,17,-16,Big 12,A,F,Texas,Big 12,-15,Lose,N,4,-2.802083333,5,-486,Completed,50.000,0.0,37
+2018,TCU,5,37,-13,Big 12,H,F,Iowa State,Big 12,3,Win,N,2,2.740147783,40,676,Completed,60.000,0.0,33
+2018,TCU,6,33,-17,Big 12,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,60.000,0.0,30
+2018,Texas,3,50,28,Big 12,H,F,Southern Cal,PAC 12,23,Win,N,0,1.929227941,-53,556,Completed,66.667,0.0,33
+2018,Texas,4,33,16,Big 12,H,U,TCU,Big 12,15,Win,N,-4,2.802083333,-5,486,Completed,75.000,0.0,18
+2018,Texas,5,18,-32,Big 12,A,F,Kansas State,Big 12,5,Win,N,0,2.609375,104,300,Completed,80.000,0.0,19
+2018,Texas,6,19,-31,Big 12,N,U,Oklahoma  ,Big 12,3,Win,N,-3,-0.415657036,-30,460,Completed,83.333,0.0,9
+2018,Texas,7,9,-41,Big 12,H,F,Baylor,Big 12,6,Win,N,0,1.182952183,-40,276,Completed,85.714,0.0,7
+2018,Texas,8,7,-43,Big 12,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,85.714,0.0,6
+2018,Texas A&M,1,33,-17,SEC,H,F,Northwestern State,FCS,52,Win,N,,,,,Completed,100.000,0.0,29
+2018,Texas A&M,2,29,27,SEC,H,U,Clemson,ACC,-2,Lose,N,2,-4.078703704,-17,464,Completed,50.000,0.0,27
+2018,Texas A&M,3,27,-23,SEC,H,F,La.-Monroe,Sun Belt,38,Win,N,-1,3.467836257,17,586,Completed,66.667,0.0,22
+2018,Texas A&M,4,22,21,SEC,A,U,Alabama,SEC,-22,Lose,N,2,-7.117424242,-32,312,Completed,50.000,0.0,31
+2018,Texas A&M,5,31,-19,SEC,N,F,Arkansas,SEC,7,Win,N,1,3.051523948,-17,832,Completed,60.000,0.0,31
+2018,Texas A&M,6,31,18,SEC,H,F,Kentucky,SEC,6,Win,Y,2,3.973333333,-27,596,Completed,66.667,0.0,22
+2018,Texas A&M,7,22,-12,SEC,A,F,South Carolina,SEC,3,Win,N,-2,3.899031107,78,1378,Completed,71.429,0.0,17
+2018,Texas A&M,8,17,-33,SEC,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,71.429,0.0,16
+2018,Texas Tech,4,50,35,Big 12,A,U,Oklahoma State,Big 12,24,Win,N,0,2.404628331,-48,1354,Completed,75.000,0.0,25
+2018,Texas Tech,7,50,20,Big 12,A,U,TCU,Big 12,3,Win,N,-2,2.143819144,26,90,Completed,66.667,0.0,35
+2018,Texas Tech,8,35,-15,Big 12,H,F,Kansas,Big 12,32,Win,N,1,4.442857143,-12,4,Completed,71.429,0.0,26
+2018,UAB,8,50,0,CUSA,H,F,North Texas,CUSA,8,Win,N,0,2.241702742,40,654,Completed,85.714,0.0,39
+2018,UCF,1,21,-29,AAC,A,F,Connecticut,AAC,39,Win,N,-3,4.884381339,-66,-976,Completed,100.000,0.0,19
+2018,UCF,2,19,-31,AAC,H,F,South Carolina State,FCS,38,Win,N,,,,,Completed,100.000,0.0,18
+2018,UCF,3,18,-32,AAC,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,100.000,0.0,16
+2018,UCF,4,16,-34,AAC,H,F,FAU,CUSA,20,Win,N,-3,3.757305195,-24,-134,Completed,100.000,0.0,13
+2018,UCF,5,13,-37,AAC,H,F,Pittsburgh,ACC,32,Win,N,-1,5.036889332,-54,-178,Completed,100.000,0.0,12
+2018,UCF,6,12,-38,AAC,H,F,SMU,AAC,28,Win,N,0,3.752085419,60,-324,Completed,100.000,0.0,10
+2018,UCF,7,10,-40,AAC,A,F,Memphis,AAC,1,Win,N,-1,4.157513836,60,-638,Completed,100.000,0.0,10
+2018,UCF,8,10,-40,AAC,A,F,East Carolina,AAC,27,Win,N,-5,0.009118541,60,176,Completed,100.000,0.0,10
+2018,Utah,2,26,-24,PAC 12,A,F,N. Illinois,MAC,11,Win,N,0,6.225806452,17,-184,Completed,100.000,0.0,26
+2018,Utah,6,50,36,PAC 12,A,U,Stanford,PAC 12,19,Win,N,-4,3.433333333,45,160,Completed,60.000,0.0,32
+2018,Utah,7,32,-18,PAC 12,H,F,Arizona,PAC 12,32,Win,N,1,7.915584416,38,380,Completed,66.667,0.0,33
+2018,Utah,8,33,5,PAC 12,H,F,Southern Cal,PAC 12,13,Win,N,0,7.57037037,49,576,Completed,71.429,0.0,23
+2018,Utah State,6,50,12,MWC,A,P,BYU,Independent,25,Win,N,-3,0.339010989,75,144,Completed,80.000,0.0,33
+2018,Utah State,7,33,-17,MWC,H,F,UNLV,MWC,31,Win,N,0,7.351766513,-15,-412,Completed,83.333,0.0,32
+2018,Utah State,8,32,-18,MWC,A,F,Wyoming,MWC,8,Win,N,-1,-2.58011583,-28,-918,Completed,85.714,0.0,27
+2018,Virginia,7,50,34,ACC,H,U,"Miami, FL",ACC,3,Win,N,0,-1.463875205,-11,220,Completed,66.667,0.0,39
+2018,Virginia,8,39,5,ACC,A,U,Duke,ACC,14,Win,N,-2,1.185848252,-12,796,Completed,71.429,0.0,31
+2018,Virginia Tech,1,20,1,ACC,A,U,Florida State,ACC,21,Win,N,-5,2.771062271,19,464,Completed,100.000,0.0,12
+2018,Virginia Tech,2,12,-38,ACC,H,F,William & Mary,FCS,45,Win,N,,,,,Completed,100.000,0.0,13
+2018,Virginia Tech,3,13,-37,ACC,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,100.000,0.0,13
+2018,Virginia Tech,4,13,-37,ACC,A,F,Old Dominion,CUSA,-14,Lose,N,1,-2.671084337,85,-62,Completed,66.667,0.0,28
+2018,Virginia Tech,5,28,6,ACC,A,U,Duke,ACC,17,Win,N,-1,7.497142857,11,104,Completed,75.000,0.0,24
+2018,Washington,1,6,-3,PAC 12,N,U,Auburn,SEC,-5,Lose,N,2,-1.46025641,-16,-120,Completed,0.000,0.0,9
+2018,Washington,2,9,-41,PAC 12,H,F,North Dakota,FCS,42,Win,N,,,,,Completed,50.000,0.0,10
+2018,Washington,3,10,-40,PAC 12,A,F,Utah  ,PAC 12,14,Win,N,-2,2.620098039,-20,382,Completed,66.667,0.0,11
+2018,Washington,4,11,-24,PAC 12,H,F,Arizona State,PAC 12,7,Win,N,0,4.782608696,-42,86,Completed,75.000,0.0,11
+2018,Washington,5,11,-9,PAC 12,H,F,BYU,Independent,28,Win,N,0,7.120816327,-10,134,Completed,80.000,0.0,10
+2018,Washington,6,10,-40,PAC 12,A,F,UCLA,PAC 12,7,Win,N,0,3.7,-35,978,Completed,83.333,0.0,7
+2018,Washington,8,15,-15,PAC 12,H,F,Colorado,PAC 12,14,Win,N,1,1.825396825,-3,108,Completed,75.000,0.0,15
+2018,Washington State,1,50,0,PAC 12,A,F,Wyoming,MWC,22,Win,N,1,2.104965804,-34,196,Completed,100.000,0.0,37
+2018,Washington State,2,37,-13,PAC 12,H,F,San Jose State,MWC,31,Win,N,2,5.640522876,4,780,Completed,100.000,0.0,38
+2018,Washington State,5,50,0,PAC 12,H,U,Utah  ,PAC 12,4,Win,N,1,3.411217304,28,-444,Completed,80.000,0.0,32
+2018,Washington State,6,32,-18,PAC 12,A,F,Oregon State,PAC 12,19,Win,N,0,4.210526316,-58,-422,Completed,83.333,0.0,28
+2018,Washington State,7,28,-22,PAC 12,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,83.333,0.0,25
+2018,Washington State,8,25,-25,PAC 12,H,F,Oregon  ,PAC 12,14,Win,N,2,1.509803922,11,417,Completed,85.714,0.0,14
+2018,West Virginia,1,17,-33,Big 12,N,F,Tennessee,SEC,26,Win,N,1,7.839869281,-13,-286,Completed,100.000,0.0,14
+2018,West Virginia,2,14,-36,Big 12,H,F,Youngstown State,FCS,35,Win,N,,,,,Completed,100.000,0.0,14
+2018,West Virginia,3,14,-36,Big 12,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,100.000,0.0,12
+2018,West Virginia,4,12,-38,Big 12,H,F,Kansas State,Big 12,29,Win,N,3,4.996581197,-34,-406,Completed,100.000,0.0,12
+2018,West Virginia,5,12,-13,Big 12,A,F,Texas Tech,Big 12,8,Win,N,-3,3.822143053,55,52,Completed,100.000,0.0,9
+2018,West Virginia,6,9,-41,Big 12,H,F,Kansas,Big 12,16,Win,N,1,3.330894309,5,502,Completed,100.000,0.0,6
+2018,West Virginia,7,6,-44,Big 12,A,F,Iowa State,Big 12,-16,Lose,N,0,-6.540952381,8,-882,Completed,83.333,0.0,13
+2018,West Virginia,8,13,-37,Big 12,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,83.333,0.0,13
+2018,Wisconsin,1,4,-46,Big 10,H,F,W. Kentucky,CUSA,31,Win,N,-1,3.524697581,5,486,Completed,100.000,0.0,5
+2018,Wisconsin,2,5,-45,Big 10,H,F,New Mexico,MWC,31,Win,N,-1,7.707977208,29,788,Completed,100.000,0.0,6
+2018,Wisconsin,3,6,-44,Big 10,H,F,BYU,Independent,-3,Lose,N,1,0.33190447,-3,520,Completed,66.667,0.0,18
+2018,Wisconsin,4,18,-32,Big 10,A,F,Iowa  ,Big 10,11,Win,N,-3,1.836700337,63,626,Completed,75.000,0.0,15
+2018,Wisconsin,5,15,-35,Big 10,N,P,na ,na,0,DNP,N,na,na,na,na,DNP,75.000,0.0,16
+2018,Wisconsin,6,16,-34,Big 10,H,F,Nebraska,Big 10,17,Win,N,0,-0.825980392,-50,666,Completed,80.000,0.0,15
+2018,Wisconsin,7,15,3,Big 10,A,U,Michigan,Big 10,-25,Lose,N,2,-0.129251701,15,-842,Completed,66.667,0.0,23
+2018,Wisconsin,8,23,-27,Big 10,H,F,Illinois,Big 10,29,Win,N,-3,3.282296651,25,944,Completed,71.429,0.0,20

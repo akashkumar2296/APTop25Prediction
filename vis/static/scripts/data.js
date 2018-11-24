@@ -1,5 +1,19 @@
-var cachedPrediction = new Array();
 var realMode = false; //set to true to use Python data.
+var sim_aprankings = []
+
+function genSim_aprankings() {
+	sim_aprankings = []
+	for (var i=0; i<getCurrentWeek(); i++){
+		sim_aprankings.push([])
+	}
+	for (var i=0; i<sim_team_details.length; i++) {
+		week = parseInt(sim_team_details[i].week);
+		rank = parseInt(sim_team_details[i].Rank);
+		if (rank <= 25) {	
+			sim_aprankings[week-1][rank-1] = sim_team_details[i].team
+		}
+	}
+}
 
 function getCurrentWeek() 
 {	
@@ -7,8 +21,9 @@ function getCurrentWeek()
 		//TODO: retrieve the current week from Python
 	}
 	else 
-		return sim_currentweek;
+		return parseInt(sim_in_progress_games[0].week);
 }	
+
 
 function getRankings(week) {
 	if (realMode) {
@@ -17,59 +32,69 @@ function getRankings(week) {
 		//week is an int from 1 to the last week number of the season.
 	}
 	else {
-		return sim_aprankings[week-1]
+			if (sim_aprankings.length == 0) 
+			genSim_aprankings();
+		return sim_aprankings[week-1];
 	}
 }
 
 function getPrediction() {
-	if (cachedPrediction.length == 0)
-		cachedPrediction = retrievePrediction();
-	
-	return cachedPrediction;
-}
-
-
-function predictRanking(teamstats) {
+	prediction = []
 	if (realMode) {
-		//TODO: run ML model to predict the ranking for the team and return the rankings for the 2 teams in an object {team1:<int>, team2:<int>}
-		//teamstats is an object with the following attributes:
-		//{team:<string>, HAN:<string>, oppteam:<string>, scoreDiff:<int>, winLose:<string>, 
-		// OT:<boolean>, toDiff:<int>, yppDiff:<decimal>, PenYdDiff:<int>, topDiff:<int>, winPer:<decimal>}
-		//NOTE: some of the features, such as PreRank, RankDiff, etc. should be available in Python
+		//TODO: run ML model to get top 25 rankings prediction.
 	}
 	else {
-		var rank1 = Math.floor(Math.random()*25)+1;
-		var rank2 = Math.floor(Math.random()*25)+1;
-		return {team1:rank1, team2:rank2} 
+		prediction = ["Alabama", "Michigan", "Clemson", "NotreDame", "Georgia", "unknown", "unknown","Oklahoma","unknown","unknown",
+		"OhioState","UCF","Florida","Texas","unknown","unknown","Utah","LSU","unknown","unknown","unknown","unknown","unknown",
+	    "Syracuse","IowaState"]
 	}
-
+	return prediction;
 }
 
-function retrievePrediction() {
+function getUnknownPrediction() {
+	prediction = []
+	for (var i=0; i<25; i++) 
+		prediction.push("unknown");
+	return prediction;
+}
+
+
+function predictRanking(team) {
 	if (realMode) {
-		//TODO: retrieve current top 25 predictions
-		//return an Array of 25 team names
-		//if the prediction is not available yet, return an empty array.
+		//TODO: run ML model to predict the ranking for the team
 	}
 	else {
-		var rankings = getRankings(getCurrentWeek());
-		var prediction = new Array();
-		console.log(prediction);
-		for (var i=0; i < rankings.length; i++)
-			prediction.push(rankings[i]);
-		team0 = prediction[0]
-		team5 = prediction[5]
-		team13 = prediction[13]
-		team24 = prediction[24]
-		prediction[0] = team5;
-		prediction[5] = team0;
-		prediction[13] = team24;
-		prediction[24] = team13;
-		return prediction;
+		prediction = getPrediction();
+		ranking = 50;
+		for (var i=0; i<prediction.length; i++) {
+			if (team == prediction[i]) {
+				ranking = i+1;
+				break;
+			}
+		}
+		return ranking;
+
 	}
 
 }
 
+function getTeamStats(team) {
+	if (realMode) {
+		//TODO: Retrieve current stats for team
+	}
+	else {
+		teamStats = []
+		sim_in_progress_games.push({team:"AirForce",week:"1",PrevRank:"50",RankDiff:"0",Conference:"MWC",HAN:"H",FavUnd:"F",OppTeam:"StonyBrook",OppConf:"FCS",ScoreDiff:"38",WinLose:"Win",OT:"N",TODiff:"",YPPDiff:"",PenYdDiff:"",TOPDiff:"",GameStatus:"Completed",WinPer:"100.000",TimeRem:"0",Rank:"50"});
+		for (var i=0; i<sim_in_progress_games.length; i++) {
+			if (sim_in_progress_games[i].team == team) {
+				teamStats.push(sim_in_progress_games[i]);
+				break;
+			}
+		}
+		return teamStats;
+
+	}
+}
 
 function getGameData() {
 
@@ -84,7 +109,57 @@ function getGameData() {
 
 	}
 	else {
-		return sim_scoredata;
+		var scoredata=[]
+		for (var i=0; i<sim_in_progress_games.length; i++) {
+			team = sim_in_progress_games[i]["team"];
+			OppTeam = sim_in_progress_games[i]["OppTeam"]
+			score = sim_in_progress_games[i]["ScoreDiff"]
+			HAN = sim_in_progress_games[i]["HAN"]
+			min = "0" + Math.floor(parseInt(sim_in_progress_games[i]["TimeRem"])/60).toString()
+			min = min.substr(min.length-2,2);
+			sec = "0" + Math.floor(parseInt(sim_in_progress_games[i]["TimeRem"])/3600).toString();
+			sec = sec.substr(sec.length-2,2);
+			timeRem = "Time: " + min + ":" + sec
+			if (HAN == 'H') {
+				team1 = team
+				team2 = OppTeam
+				if (score > 0) {
+					score1 = score
+					score2 = 0
+				}
+				else {
+					score1 = 0
+					score2 = -score
+				}
+			}
+			else if (HAN=='A') {
+				team2 = team
+				team1 = OppTeam
+				if (score > 0) {
+					score2 = score
+					score1 = 0
+				}
+				else {
+					score2 = 0
+					score1 = -score
+				}
+			}
+			else {
+				team1 = team
+				team2 = OppTeam
+				if (score > 0) {
+					score1 = score
+					score2 = 0
+				}
+				else {
+					score1 = 0
+					score2 = -score
+				}
+			}
+
+			scoredata.push({team1: {id:team1, score:score1}, team2:{id:team2,score:score2} , time: timeRem});
+		}
+		return scoredata;
 	}	
 		
 		

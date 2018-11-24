@@ -62,7 +62,7 @@ function rowToColBasedGridData(rowBasedData) {
 
 
 
-var data = d3.range(1, getCurrentWeek()+1);
+var data = d3.range(1, getCurrentWeek());
 
 var select = d3.select('#gridcontrol')
 .append('text')
@@ -74,6 +74,7 @@ var select = d3.select('#gridcontrol')
 .append('select')
 	.classed("option", true)
 	.on('change',onchange)
+	
 
 var options = select
 .selectAll('option')
@@ -82,14 +83,35 @@ var options = select
 		.text(function (d) { return d; });
 
 function onchange() {
-	selectValue = d3.select('select').property('value');
-	refreshRankingsGrid(selectValue);
+	weekShowing = parseInt(d3.select('select').property('value'));
+	refreshRankingsGrid(weekShowing);
 };
 
 d3.select('#gridcontrol')
 .append('text')
 .classed("option", true)
-.text("  Current Week: " + getCurrentWeek());
+.text("  Current Week: " + getCurrentWeek() + "  ");
+
+
+d3.select('#gridcontrol')
+.append("button")
+.text("Run Prediction")
+.on("click", function(){
+	weekShowing = parseInt(d3.select('select').property('value'));
+	predictionShown = getPrediction();
+	drawPredictionRow(rankings_grid);
+})
+
+d3.select('#gridcontrol')
+.append("button")
+.text("Clear Prediction")
+.on("click", function(){
+	weekShowing = parseInt(d3.select('select').property('value'));
+	predictionShown = getUnknownPrediction();
+	drawPredictionRow(rankings_grid);
+})
+
+
 
 
 function refreshRankingsGrid(num_weeks) {
@@ -121,7 +143,7 @@ var score_grid = d3.select("#scoreboard")
 	;
 
 var scoreboxes = drawScorebox3(score_grid, getGameData(), score_tile_size);
-
+weekShowing = 1;
 refreshRankingsGrid(1);
 
 // setInterval(function() { refreshScore(score_grid)}, 1000);
