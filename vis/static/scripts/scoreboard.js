@@ -115,7 +115,7 @@ function drawScorebox3(svgarea, scoreboxdata, tile_size) {
 
 
 	scorebox.append("image")
-	.attr("xlink:href",  function(d) { d.team=1; return "/static/images/" + d.team1.id +".png"})
+	.attr("xlink:href",  function(d) { d.team=1; return "static/images/" + d.team1.id +".png"})
 	.attr("team", 2)
 	.attr("x", function(d) { d.image1offsetx = 2; return d.image1offsetx;})
 	.attr("y", function(d) { d.image1offsety = 2; return d.image1offsety;})
@@ -150,7 +150,7 @@ function drawScorebox3(svgarea, scoreboxdata, tile_size) {
 	.style("stroke", "black");
 
 	scorebox.append("image")
-	.attr("xlink:href",  function(d) { d.team=2; return "/static/images/" + d.team2.id +".png"})
+	.attr("xlink:href",  function(d) { d.team=2; return "static/images/" + d.team2.id +".png"})
 	.attr("team", 2)
 	.attr("x", function(d) { d.image2offsetx = tile_size.w - 30; return d.image2offsetx;}) 
 	.attr("y", function(d) { d.image2offsety = 2; return d.image2offsety;})

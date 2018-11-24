@@ -69,7 +69,7 @@ function drawRankings(grid, rankingCells, rankings, background, week) {
 		.enter()
 		.append("svg:image")
 	    .filter(function(d, i) {return i>0;})
-		.attr("xlink:href",  function(d,i) { return "/static/images/" + rankings[i] + ".png";})
+		.attr("xlink:href",  function(d,i) { return "static/images/" + rankings[i] + ".png";})
 		.attr("x", function(d) { return d.x+3; })
 		.attr("y", function(d) { return d.y+2; })
 		.attr("width", function(d) { return d.width*0.8; })
