@@ -51,8 +51,6 @@ function tooltip_text_team(team) {
 		tooltips += "No information available."
 	}
 	else {
-		// sim_in_progress_games.push({team:"AirForce",week:"1",PrevRank:"50",RankDiff:"0",Conference:"MWC",HAN:"H",FavUnd:"F",OppTeam:"StonyBrook",OppConf:"FCS",ScoreDiff:"38",WinLose:"Win",OT:"N",TODiff:"",YPPDiff:"",PenYdDiff:"",TOPDiff:"",GameStatus:"Completed",WinPer:"100.000",TimeRem:"0",Rank:"50"});
-
 		teamStats = teamStats[0];
 		for (x in teamStats) {
 			if (x != "team" && x != "week")

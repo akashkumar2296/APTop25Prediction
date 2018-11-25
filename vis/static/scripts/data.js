@@ -1,5 +1,10 @@
 var realMode = false; //set to true to use Python data.
 var sim_aprankings = []
+var simTimePoints = ['End of 1st', 'End of 2nd', 'End of 3rd', 'Final']
+var simEquivalentTimeRem = ["2700", "1800", "900", "0"]
+var currentSimTimePoint = 0;
+
+
 
 function genSim_aprankings() {
 	sim_aprankings = []
@@ -84,9 +89,8 @@ function getTeamStats(team) {
 	}
 	else {
 		teamStats = []
-		sim_in_progress_games.push({team:"AirForce",week:"1",PrevRank:"50",RankDiff:"0",Conference:"MWC",HAN:"H",FavUnd:"F",OppTeam:"StonyBrook",OppConf:"FCS",ScoreDiff:"38",WinLose:"Win",OT:"N",TODiff:"",YPPDiff:"",PenYdDiff:"",TOPDiff:"",GameStatus:"Completed",WinPer:"100.000",TimeRem:"0",Rank:"50"});
 		for (var i=0; i<sim_in_progress_games.length; i++) {
-			if (sim_in_progress_games[i].team == team) {
+			if (sim_in_progress_games[i].team == team && sim_in_progress_games[i].TimeRem == simEquivalentTimeRem[currentSimTimePoint]) {
 				teamStats.push(sim_in_progress_games[i]);
 				break;
 			}
@@ -110,9 +114,16 @@ function getGameData() {
 	}
 	else {
 		var scoredata=[]
+		game_teams = []
 		for (var i=0; i<sim_in_progress_games.length; i++) {
+			if (sim_in_progress_games[i]["TimeRem"] != simEquivalentTimeRem[currentSimTimePoint])
+				continue;
 			team = sim_in_progress_games[i]["team"];
+			if (game_teams.includes(team))
+				continue;
 			OppTeam = sim_in_progress_games[i]["OppTeam"]
+			game_teams.push(team);
+			game_teams.push(OppTeam);
 			score = sim_in_progress_games[i]["ScoreDiff"]
 			HAN = sim_in_progress_games[i]["HAN"]
 			min = "0" + Math.floor(parseInt(sim_in_progress_games[i]["TimeRem"])/60).toString()
