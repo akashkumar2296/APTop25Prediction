@@ -130,4 +130,5 @@ var teams = new Array();
     teams.push({id:"WestVirginia", display:"WestVirginia"});
     teams.push({id:"Wisconsin", display:"Wisconsin"});
     teams.push({id:"Wyoming", display:"Wyoming"});
+    teams.push({id:"Washignton", display:"Washignton"});
     teams.push({id:"Miami", display:"Miami"});

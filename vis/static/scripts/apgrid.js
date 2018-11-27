@@ -84,6 +84,7 @@ var weeksToShowOptions = select
 .selectAll('option')
 	.data(d3.range(1, getCurrentWeek())).enter()
 	.append('option')
+		.classed("option", true)
 		.text(function (d) { return d; });
 
 
@@ -91,14 +92,8 @@ var weeksToShowOptions = select
 d3.select('#gridcontrol')
 .append('text')
 .classed("option", true)
-.text("  Current Week: " + getCurrentWeek() + "  ");
+.text("  Current Week: " + getCurrentWeek() + " ");
 
-
-function showPrediction() {
-	weekShowing = parseInt(d3.select('select').property('value'));
-	predictionShown = getPrediction();
-	drawPredictionRow(rankings_grid);
-}
 
 function clearPrediction() {
 	weekShowing = parseInt(d3.select('select').property('value'));
@@ -106,15 +101,67 @@ function clearPrediction() {
 	drawPredictionRow(rankings_grid);	
 }
 
-d3.select('#gridcontrol')
-.append("button")
-.text("Run Prediction")
-.on("click", function(){ showPrediction() })
 
 d3.select('#gridcontrol')
 .append("button")
-.text("Clear Prediction")
+.text("Clear Prediction row")
 .on("click", function(){ clearPrediction()})
+
+
+d3.select('#gridcontrol')
+.append("button")
+.text("Click to Predict: ")
+.on("click", function(){ showPrediction() })
+
+
+
+function showPrediction() {
+	var team = selectTeam.property('value');
+	weekShowing = parseInt(d3.select('select').property('value'));
+
+	if (team == "Top 25") {
+		predictionShown = getPrediction();
+		drawPredictionRow(rankings_grid);
+	}
+	else {
+		var predict = predictRanking(team);
+		predictMsg.text(team + ": Predicted Ranking #" + predict);
+		if (predict <= 25) {
+			predictionShown[predict-1] = team;
+			drawPredictionRow(rankings_grid);
+		}
+	
+	}
+}
+
+//Team prediction selection
+var select = d3.select('#gridcontrol')
+.append('text')
+	.classed("option", true)
+	.text(' >>');
+
+function onchange_teamPredictOption(d) {
+	team = d3.select(this).property('value');
+};
+	
+var selectTeam = d3.select('#gridcontrol')
+.append('select')
+	.classed("option", true)
+	.on('change',onchange_teamPredictOption);
+
+var predictOption = teams.slice(0);
+predictOption.unshift({id:"Top 25"});
+
+var teamPredictOption = selectTeam
+.selectAll('option')
+	.data(predictOption).enter()
+	.append('option')
+		.text(function (d) { return d.id; });
+
+var predictMsg = d3.select('#gridcontrol')
+.append('text')
+.classed("option", true)
+.text("");
 
 
 function refreshRankingsGrid(num_weeks) {
