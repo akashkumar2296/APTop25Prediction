@@ -122,29 +122,29 @@ function drawScorebox3(svgarea, scoreboxdata, tile_size) {
 	.classed("team1", true)
 	.on("mouseover", tooltip_team1.show)
 	.on("mouseout", tooltip_team1.hide)
-	.on("dblclick", function(d,i) {
-		if (d.predicted == undefined || !d.predicted) {
-			d.predicted = true;
-			predict = predictRanking(d.team1.id);
-			if (predict > 25) {
-				alert(d.team1.id + " is Ranked " + predict);
-			}
-			else {
-				predictionShown[predict-1] = d.team1.id;
-				drawPredictionRow(rankings_grid);
-			}
-		}
-		else {
-			d.predicted = false;
-			for (var i=0; i<predictionShown.length; i++) {
-				if (predictionShown[i] == d.team1.id) {
-					predictionShown[i] = "unknown";
-					drawPredictionRow(rankings_grid);
-					break;
-				}
-			}
-		}
-	})
+	// .on("dblclick", function(d,i) {
+	// 	if (d.predicted == undefined || !d.predicted) {
+	// 		d.predicted = true;
+	// 		predict = predictRanking(d.team1.id);
+	// 		if (predict > 25) {
+	// 			alert(d.team1.id + " is Ranked " + predict);
+	// 		}
+	// 		else {
+	// 			predictionShown[predict-1] = d.team1.id;
+	// 			drawPredictionRow(rankings_grid);
+	// 		}
+	// 	}
+	// 	else {
+	// 		d.predicted = false;
+	// 		for (var i=0; i<predictionShown.length; i++) {
+	// 			if (predictionShown[i] == d.team1.id) {
+	// 				predictionShown[i] = "unknown";
+	// 				drawPredictionRow(rankings_grid);
+	// 				break;
+	// 			}
+	// 		}
+	// 	}
+	// })
 	.style("stroke", "black");
 
 	scorebox.append("image")
@@ -157,29 +157,29 @@ function drawScorebox3(svgarea, scoreboxdata, tile_size) {
 	.classed("team2", true)
 	.on("mouseover", tooltip_team2.show)
 	.on("mouseout", tooltip_team2.hide)
-	.on("dblclick", function(d,i) {
-		if (d.predicted == undefined || !d.predicted) {
-			d.predicted = true;
-			predict = predictRanking(d.team2.id);
-			if (predict > 25) {
-				alert(d.team2.id + " is Ranked " + predict);
-			}
-			else {
-				predictionShown[predict-1] = d.team2.id;
-				drawPredictionRow(rankings_grid);
-			}
-		}
-		else {
-			d.predicted = false;
-			for (var i=0; i<predictionShown.length; i++) {
-				if (predictionShown[i] == d.team2.id) {
-					predictionShown[i] = "unknown";
-					drawPredictionRow(rankings_grid);
-					break;
-				}
-			}
-		}
-	})
+	// .on("dblclick", function(d,i) {
+	// 	if (d.predicted == undefined || !d.predicted) {
+	// 		d.predicted = true;
+	// 		predict = predictRanking(d.team2.id);
+	// 		if (predict > 25) {
+	// 			alert(d.team2.id + " is Ranked " + predict);
+	// 		}
+	// 		else {
+	// 			predictionShown[predict-1] = d.team2.id;
+	// 			drawPredictionRow(rankings_grid);
+	// 		}
+	// 	}
+	// 	else {
+	// 		d.predicted = false;
+	// 		for (var i=0; i<predictionShown.length; i++) {
+	// 			if (predictionShown[i] == d.team2.id) {
+	// 				predictionShown[i] = "unknown";
+	// 				drawPredictionRow(rankings_grid);
+	// 				break;
+	// 			}
+	// 		}
+	// 	}
+	// })
 	.style("stroke", "black");
 
 	scorebox.append("text")
