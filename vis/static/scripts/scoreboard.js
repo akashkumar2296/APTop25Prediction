@@ -46,7 +46,7 @@ function dragended_scorebox(d) {
 //build tooltips
 function tooltip_text_team(team) {
 	var tooltips = "<strong>" + team + "</strong><br>" 
-	var teamStats = getTeamStats(team);
+	var teamStats = getTeamCurrentStats(team);
 	if (teamStats.length == 0) {
 		tooltips += "No information available."
 	}

@@ -83,7 +83,7 @@ function predictRanking(team) {
 
 }
 
-function getTeamStats(team) {
+function getTeamCurrentStats(team) {
 	if (realMode) {
 		//TODO: Retrieve current stats for team
 	}
@@ -99,6 +99,24 @@ function getTeamStats(team) {
 
 	}
 }
+
+function getTeamStats(team, week) {
+	if (realMode) {
+		//TODO: Retrieve stats for team for week
+	}
+	else {
+		teamStats = []
+		for (var i=0; i<sim_team_details.length; i++) {
+			if (sim_team_details[i].team == team && sim_team_details[i].week == week) {
+				teamStats.push(sim_team_details[i]);
+				break;
+			}
+		}
+		return teamStats;
+
+	}
+}
+
 
 function getGameData() {
 

@@ -38,15 +38,29 @@ function drawRankingHeaders(grid, rankingHeaderCells, tile_size) {
 
 //build tooltips
 function tooltip_text(d) {
-	var tooltips = "<strong>Team " + d.team + " in Week "+ d.week + "</strong><br>";
-	tooltips += "Show some stats here......<br>";
-	tooltips += "or some charts, etc.<br>";
+	var tooltips = "<strong>" + d.team + "</strong><br>" 
+	var teamStats = getTeamStats(d.team, (parseInt(d.week) + getCurrentWeek() - weekShowing - 1).toString());
+	if (teamStats.length == 0) {
+		tooltips += "No information available."
+	}
+	else {
+		teamStats = teamStats[0];
+		for (x in teamStats) {
+			if (x != "team")
+				tooltips += x + ": " + teamStats[x] + "<br>" 
+		}
+	}
 	return tooltips;
+
+	// var tooltips = "<strong>Team " + d.team + " in Week "+ d.week + "</strong><br>";
+	// tooltips += "Show some stats here......<br>";
+	// tooltips += "or some charts, etc.<br>";
+	// return tooltips;
 }
 
 var tooltip = d3.tip()
 	.attr('class', 'tooltip')
-	.offset([80,80])
+	.offset([150,80])
 	.html(function(d) {return tooltip_text(d);});
 
 function drawRankings(grid, rankingCells, rankings, background, week) {
