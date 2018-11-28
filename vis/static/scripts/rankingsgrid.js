@@ -39,7 +39,11 @@ function drawRankingHeaders(grid, rankingHeaderCells, tile_size) {
 //build tooltips
 function tooltip_text(d) {
 	var tooltips = "<strong>" + d.team + "</strong><br>" 
-	var teamStats = getTeamStats(d.team, (parseInt(d.week) + getCurrentWeek() - weekShowing - 1).toString());
+	var week = parseInt(d.week) + getCurrentWeek() - weekShowing - 1;
+	if (week == getCurrentWeek())
+		var teamStats = getTeamCurrentStats(d.team)
+	else
+		var teamStats = getTeamStats(d.team, (week).toString());
 	if (teamStats.length == 0) {
 		tooltips += "No information available."
 	}

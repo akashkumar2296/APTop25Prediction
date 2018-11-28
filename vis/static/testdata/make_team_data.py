@@ -47,6 +47,8 @@ with open("../scripts/sim_team_details.js", "w") as jsFile:
             line = line[:len(line)-1] +"});\n"
             jsFile.write(line)
 
+# Week #12 rank #9 - should be LSU - this need to added manually.
+
 # data for the in-progress games.  This is used to simulate real-time data feeds
 with open("../scripts/sim_in_progress_games.js", "w") as jsFile:
     jsFile.write("var sim_in_progress_games = new Array();\n")
@@ -60,6 +62,7 @@ with open("../scripts/sim_in_progress_games.js", "w") as jsFile:
                     teams.append(ipdata[i][j+1].strip().replace(" ",""))
             line = line[:len(line)-1] +"});\n"
             jsFile.write(line)
+
 
 # generate the list of teams as found in the datasets
 with open("../scripts/teams.js", "w") as jsFile:

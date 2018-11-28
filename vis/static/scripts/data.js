@@ -18,6 +18,14 @@ function genSim_aprankings() {
 			sim_aprankings[week-1][rank-1] = sim_team_details[i].team
 		}
 	}
+	for (var i=0; i<sim_team_details.length; i++) {
+		week = parseInt(sim_team_details[i].week)-1;
+		rank = parseInt(sim_team_details[i].PrevRank);
+		if (week > 0 && rank <= 25 && sim_aprankings[week-1][rank-1] == undefined) {
+			sim_aprankings[week-1][rank-1] = sim_team_details[i].team
+		}
+	}
+
 }
 
 function getCurrentWeek() 
@@ -49,11 +57,26 @@ function getPrediction() {
 		//TODO: run ML model to get top 25 rankings prediction.
 	}
 	else {
-		prediction = ["Alabama", "Michigan", "Clemson", "NotreDame", "Georgia", "unknown", "unknown","Oklahoma","unknown","unknown",
-		"OhioState","UCF","Florida","Texas","unknown","unknown","Utah","LSU","unknown","unknown","unknown","unknown","unknown",
-	    "Syracuse","IowaState"]
-	}
+		prediction = []
+		for (var i=0; i<25; i++) {
+			prediction.push("unknown");
+		}
+		prediction[1] = "Alabama";
+		prediction[2] = "Clemson";
+		prediction[3] = "NotreDame";
+		prediction[4] = "Georgia";
+		prediction[5] = "Michigan";
+		prediction[8] = "LSU";
+		prediction[7] = "OhioState";
+		prediction[12] = "Kentucky";
+		prediction[13] = "PennState";
+		prediction[14] = "Florida";
+		prediction[15] = "Syracuse";
+		prediction[17] = "Pittsburgh";
+		}
 	return prediction;
+
+
 }
 
 function getUnknownPrediction() {
