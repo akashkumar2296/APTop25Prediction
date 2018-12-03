@@ -13,6 +13,7 @@ import numpy as np
 import pandas as pd
 import pickle
 import matplotlib.pyplot as Scatter_plot
+import os
 from sklearn import metrics
 from sklearn.preprocessing import StandardScaler
 
@@ -20,12 +21,12 @@ from sklearn.preprocessing import StandardScaler
 # Model.py" script), so that it can be employed on new data from in-
 # progress football games:
 
-Model_reloaded = pickle.load(open("Model_trained.sav", "rb"))
+Model_reloaded = pickle.load(open(os.getcwd() + "/model/Model_trained.sav", "rb"))
 
 # Read in the in-progress football game dataset, on which the trained machine
 # learning model will be employed:
 
-In_prog_dataset = pd.read_csv("Dataset_Final_InProgress_Game_Data_Week_13.csv")
+In_prog_dataset = pd.read_csv(os.getcwd() + "/model/Dataset_Final_InProgress_Game_Data_Week_13.csv")
 
 # -----------------------------------------------------------------------------
 
@@ -199,7 +200,7 @@ print(Predicted_AP_rankings_wk_14)
 # of our project:
     
 In_prog_dataset_2 = pd.read_csv\
-                    ("Dataset_Final_InProgress_Game_Data_Week_13.csv")    
+                    (os.getcwd() + "/model/Dataset_Final_InProgress_Game_Data_Week_13.csv")    
 In_prog_dataset_2 = In_prog_dataset_2[In_prog_dataset_2["PrevRank"] <= 25]  
 
 Team_names = ["Team", "OppTeam"]
