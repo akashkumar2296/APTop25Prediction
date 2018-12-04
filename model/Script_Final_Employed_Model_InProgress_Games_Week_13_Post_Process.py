@@ -417,6 +417,17 @@ Predicted_teams = ["Alabama", "Ohio State", "Michigan", "Penn State",\
                    "Florida", "Syracuse", "Georgia", "Pittsburgh", "Clemson",\
                    "LSU", "Kentucky", "Notre Dame"]
 
+def Ranking_prediction_all(quarter):
+    
+    #return prediction of all teams
+    idx = int(quarter)-1;
+    all_predictions = []
+    for Team in Predicted_teams:
+        all_predictions.append({'team':Team, 'ranking':Ranking_prediction(Team)[idx]})
+    
+    return all_predictions
+
+
 print("These are predictions outputted by the Ranking_prediction function.")
 print("Each team has four numbers/predictions, one for each game quarter:")
 
