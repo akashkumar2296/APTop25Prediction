@@ -114,23 +114,43 @@ d3.select('#gridcontrol')
 .on("click", function(){ showPrediction() })
 
 
+function showPredictionHandle(team, ranking) {
+	if (ranking == undefined) {
+		predictMsg.text(team + ": Predicted Ranking is unavailable");
+	}
+	else {
+		predictMsg.text(team + ": Predicted Ranking #" + ranking);
+	}
+}
+
+function showAllPredictionsHandle(rankings, quarter) {
+	if (rankings == undefined) {
+		predictMsg.text("Top 25 Predictions not yet available");
+	}
+	else {
+		predictMsg.text("Top 25 Predictions shown at end of Quarter " + quarter);
+		clearPrediction();
+		for (var i=0; i< rankings.length; i++) {
+			if (rankings[i].ranking <= 25) {
+				predictionShown[rankings[i].ranking-1] = rankings[i].team.replace(" ","");
+			}
+		}
+		drawPredictionRow(rankings_grid);
+	}
+}
+
 
 function showPrediction() {
 	var team = selectTeam.property('value');
 	weekShowing = parseInt(d3.select('select').property('value'));
 
 	if (team == "Top 25") {
-		predictionShown = getPrediction();
-		drawPredictionRow(rankings_grid);
+		// predictionShown = getPrediction();
+		// drawPredictionRow(rankings_grid);
+		getPrediction(showAllPredictionsHandle, currentSimTimePoint+1);
 	}
 	else {
-		var predict = predictRanking(team);
-		predictMsg.text(team + ": Predicted Ranking #" + predict);
-		if (predict <= 25) {
-			predictionShown[predict-1] = team;
-			drawPredictionRow(rankings_grid);
-		}
-	
+		predictRanking(showPredictionHandle, team, currentSimTimePoint+1);
 	}
 }
 
@@ -216,23 +236,57 @@ simulation_text = d3.select('#simulation')
 .text("Current simulated time: " + simTimePoints[currentSimTimePoint] + "  ")
 .classed("heading", true);
 
-
+d3.select('#simulation').append("br")
 d3.select('#simulation')
-.append("button")
-.text("Advance to " + simTimePoints[(currentSimTimePoint+1) % simTimePoints.length])
-.on("click", function(){
-	currentSimTimePoint =(currentSimTimePoint + 1) % simTimePoints.length
-	d3.select(this).text("Advance to " + simTimePoints[(currentSimTimePoint+1) % simTimePoints.length]);
+.append("text")
+.text("Real-time data feed simulation is now:   ")
+.classed("heading", true);
+
+simulation_startstop = d3.select('#simulation')
+	.append("button")
+	.text("ON")
+	.on("click", function() {
+			if (simulating) {
+				clearInterval(interval)
+				d3.select(this).text("OFF")
+			}
+			else {
+				interval = setInterval(function() { simulate_real_data() }, 2000);
+				d3.select(this).text("ON")
+			}
+			simulating = !simulating;
+
+		});
+
+
+function advance_time() {
+	currentSimTimePoint =(currentSimTimePoint + 1) % simTimePoints.length;
 	simulation_text.text("Current simulated time: " + simTimePoints[currentSimTimePoint]+"  ");
 	refreshScoreBoxes();
-	if (simEquivalentTimeRem[currentSimTimePoint] == "0")
-		showPrediction();
-	else
-		clearPrediction();
+}
+		
+d3.select('#simulation').append("br")
+d3.select('#simulation')
+.append("text")
+.text("Move to next quarter manually:   ")
+.classed("heading", true);
 
-})
+
+simulation_move = d3.select('#simulation')
+.append("button")
+.text("Next")
+.on("click", function() {
+	currentSimTimePoint =(currentSimTimePoint + 1) % simTimePoints.length;
+	simulation_text.text("Current simulated time: " + simTimePoints[currentSimTimePoint]+"  ");
+	refreshScoreBoxes();
+});
 
 
+function simulate_real_data() {
+	advance_time()
+	getPrediction(showAllPredictionsHandle, currentSimTimePoint+1);
+}
 
 
-// setInterval(function() { refreshScore(score_grid)}, 1000);
+var interval = setInterval(function() { simulate_real_data() }, 2000);
+var simulating = true;
