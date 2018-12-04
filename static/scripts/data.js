@@ -107,21 +107,39 @@ function predictRanking(team) {
 
 }
 
-function getTeamCurrentStats(team, quarter) {
+function getTeamCurrentStats(team, quarter=null) {
 	//if (realMode) {
 		//TODO: Retrieve current stats for team
-		$.ajax({  
-           url: 'http://localhost:5001/prediction/'+team+'/'+quarter,  
-           type: 'GET',  
-           dataType: 'json',  
-           crossDomain: true,
-           success: function (data, textStatus, xhr) {  
+		if(quarter){
+
+			$.ajax({  
+           	url: 'http://localhost:5001/prediction/'+team+'/'+quarter,  
+           	type: 'GET',  
+           	dataType: 'json',  
+           	crossDomain: true,
+           	success: function (data, textStatus, xhr) {  
                 console.log(data);  // ***** Data = Team's Ranking ******
-           },  
-           error: function (xhr, textStatus, errorThrown) {  
+           	},  
+           	error: function (xhr, textStatus, errorThrown) {  
                 console.log('Error in Operation');  
-           }  
-        });
+           	}  
+        	});
+		}
+		else{
+			$.ajax({  
+           	url: 'http://localhost:5001/prediction/'+team,  
+           	type: 'GET',  
+           	dataType: 'json',  
+           	crossDomain: true,
+           	success: function (data, textStatus, xhr) {  
+                console.log(data);  // ***** Data = Team's Ranking ******
+           	},  
+           	error: function (xhr, textStatus, errorThrown) {  
+                console.log('Error in Operation');  
+           	}  
+        	});
+
+		}
 	//}
 	/*
 	else {
