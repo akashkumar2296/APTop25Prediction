@@ -87,62 +87,98 @@ function getUnknownPrediction() {
 }
 
 
-function predictRanking(team) {
-	if (realMode) {
-		//TODO: run ML model to predict the ranking for the team
-		
-	}
-	else {
-		prediction = getPrediction();
-		ranking = 50;
-		for (var i=0; i<prediction.length; i++) {
-			if (team == prediction[i]) {
-				ranking = i+1;
-				break;
-			}
+function predictRanking(callback, team, quarter=null) {
+
+	var team_name;
+	for (var i=0; i<teams.length; i++) {
+		if (teams[i].id == team) {
+			team_name = teams[i].display;
+			break;
 		}
-		return ranking;
+	}
+
+	if(quarter){
+
+		$.ajax({  
+		   url: 'http://localhost:5001/prediction/'+team_name+'/'+quarter,  
+		   type: 'GET',  
+		   dataType: 'json',  
+		   crossDomain: true,
+		   success: function (data, textStatus, xhr) {  
+			console.log("predicted ranking of ", team_name, " is ",data, " in quarter ", quarter);  // ***** Data = Team's Ranking ******
+			callback(team, data)
+		   },  
+		   error: function (xhr, textStatus, errorThrown) {  
+			console.log('Error in Operation');  
+			callback(team, undefined)
+		   }  
+		});
+	}
+	else{
+		$.ajax({  
+		   url: 'http://localhost:5001/prediction/'+teteam_nameam,  
+		   type: 'GET',  
+		   dataType: 'json',  
+		   crossDomain: true,
+		   success: function (data, textStatus, xhr) {  
+			console.log("predicted ranking of ", team_name, " is ",data);  // ***** Data = Team's Ranking ******
+			callback(team, data)
+		   },  
+		   error: function (xhr, textStatus, errorThrown) {  
+			console.log('Error in Operation');  
+			callback(team, undefined)
+		   }  
+		});
 
 	}
+
+	// 	prediction = getPrediction();
+	// 	ranking = 50;
+	// 	for (var i=0; i<prediction.length; i++) {
+	// 		if (team == prediction[i]) {
+	// 			ranking = i+1;
+	// 			break;
+	// 		}
+	// 	}
+	// 	return ranking;
 
 }
 
 function getTeamCurrentStats(team, quarter=null) {
-	//if (realMode) {
-		//TODO: Retrieve current stats for team
-		if(quarter){
+	// //if (realMode) {
+	// 	//TODO: Retrieve current stats for team
+	// 	if(quarter){
 
-			$.ajax({  
-           	url: 'http://localhost:5001/prediction/'+team+'/'+quarter,  
-           	type: 'GET',  
-           	dataType: 'json',  
-           	crossDomain: true,
-           	success: function (data, textStatus, xhr) {  
-                console.log(data);  // ***** Data = Team's Ranking ******
-           	},  
-           	error: function (xhr, textStatus, errorThrown) {  
-                console.log('Error in Operation');  
-           	}  
-        	});
-		}
-		else{
-			$.ajax({  
-           	url: 'http://localhost:5001/prediction/'+team,  
-           	type: 'GET',  
-           	dataType: 'json',  
-           	crossDomain: true,
-           	success: function (data, textStatus, xhr) {  
-                console.log(data);  // ***** Data = Team's Ranking ******
-           	},  
-           	error: function (xhr, textStatus, errorThrown) {  
-                console.log('Error in Operation');  
-           	}  
-        	});
+	// 		$.ajax({  
+    //        	url: 'http://localhost:5001/prediction/'+team+'/'+quarter,  
+    //        	type: 'GET',  
+    //        	dataType: 'json',  
+    //        	crossDomain: true,
+    //        	success: function (data, textStatus, xhr) {  
+    //             console.log(data);  // ***** Data = Team's Ranking ******
+    //        	},  
+    //        	error: function (xhr, textStatus, errorThrown) {  
+    //             console.log('Error in Operation');  
+    //        	}  
+    //     	});
+	// 	}
+	// 	else{
+	// 		$.ajax({  
+    //        	url: 'http://localhost:5001/prediction/'+team,  
+    //        	type: 'GET',  
+    //        	dataType: 'json',  
+    //        	crossDomain: true,
+    //        	success: function (data, textStatus, xhr) {  
+    //             console.log(data);  // ***** Data = Team's Ranking ******
+    //        	},  
+    //        	error: function (xhr, textStatus, errorThrown) {  
+    //             console.log('Error in Operation');  
+    //        	}  
+    //     	});
 
-		}
+	// 	}
 	//}
-	/*
-	else {
+	// else {
 		teamStats = []
 		for (var i=0; i<sim_in_progress_games.length; i++) {
 			if (sim_in_progress_games[i].team == team && sim_in_progress_games[i].TimeRem == simEquivalentTimeRem[currentSimTimePoint]) {
@@ -152,8 +188,7 @@ function getTeamCurrentStats(team, quarter=null) {
 		}
 		return teamStats;
 
-	}
-	*/
+	// }
 }
 
 function getTeamStats(team, week) {
