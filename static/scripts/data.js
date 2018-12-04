@@ -55,7 +55,7 @@ function getPrediction(callback, quarter) {
 	if(quarter){
 
 		$.ajax({  
-		   url: 'http://localhost:5001/prediction/All'+'/'+quarter,  
+		   url: 'http://aptop25prediction.azurewebsites.net/prediction/All'+'/'+quarter,  
 		   type: 'GET',  
 		   dataType: 'json',  
 		   crossDomain: true,
@@ -71,7 +71,7 @@ function getPrediction(callback, quarter) {
 	}
 	else{
 		$.ajax({  
-		   url: 'http://localhost:5001/prediction/All',  
+		   url: 'http://aptop25prediction.azurewebsites.net/prediction/All',  
 		   type: 'GET',  
 		   dataType: 'json',  
 		   crossDomain: true,
@@ -135,7 +135,7 @@ function predictRanking(callback, team, quarter=null) {
 	if(quarter){
 
 		$.ajax({  
-		   url: 'http://localhost:5001/prediction/'+team_name+'/'+quarter,  
+		   url: 'http://aptop25prediction.azurewebsites.net/prediction/'+team_name+'/'+quarter,  
 		   type: 'GET',  
 		   dataType: 'json',  
 		   crossDomain: true,
@@ -151,7 +151,7 @@ function predictRanking(callback, team, quarter=null) {
 	}
 	else{
 		$.ajax({  
-		   url: 'http://localhost:5001/prediction/'+team_name,  
+		   url: 'http://aptop25prediction.azurewebsites.net/prediction/'+team_name,  
 		   type: 'GET',  
 		   dataType: 'json',  
 		   crossDomain: true,
