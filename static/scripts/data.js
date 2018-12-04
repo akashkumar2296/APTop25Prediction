@@ -90,6 +90,7 @@ function getUnknownPrediction() {
 function predictRanking(team) {
 	if (realMode) {
 		//TODO: run ML model to predict the ranking for the team
+		
 	}
 	else {
 		prediction = getPrediction();
@@ -107,9 +108,22 @@ function predictRanking(team) {
 }
 
 function getTeamCurrentStats(team) {
-	if (realMode) {
+	//if (realMode) {
 		//TODO: Retrieve current stats for team
-	}
+		$.ajax({  
+           url: 'http://localhost:5001/prediction/'+team,  
+           type: 'GET',  
+           dataType: 'json',  
+           crossDomain: true,
+           success: function (data, textStatus, xhr) {  
+                console.log(data);  // ***** Data = Team's Ranking ******
+           },  
+           error: function (xhr, textStatus, errorThrown) {  
+                console.log('Error in Operation');  
+           }  
+        });
+	//}
+	/*
 	else {
 		teamStats = []
 		for (var i=0; i<sim_in_progress_games.length; i++) {
@@ -121,6 +135,7 @@ function getTeamCurrentStats(team) {
 		return teamStats;
 
 	}
+	*/
 }
 
 function getTeamStats(team, week) {
