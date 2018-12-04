@@ -1,6 +1,6 @@
 # Kevin Cass, Akash Kumar, Kee Mok, Daniel Lauer, and Carol Sikes
 # CSE 6242 Semester Project - Final Employed Model on In-Progress Games Week 13
-# 26 November 2018
+# 26 November - 3 December 2018
 
 ###############################################################################
 ###############################################################################
@@ -13,7 +13,6 @@ import numpy as np
 import pandas as pd
 import pickle
 import matplotlib.pyplot as Scatter_plot
-import os
 from sklearn import metrics
 from sklearn.preprocessing import StandardScaler
 
@@ -21,12 +20,12 @@ from sklearn.preprocessing import StandardScaler
 # Model.py" script), so that it can be employed on new data from in-
 # progress football games:
 
-Model_reloaded = pickle.load(open(os.getcwd() + "/model/Model_trained.sav", "rb"))
+Model_reloaded = pickle.load(open("Model_trained.sav", "rb"))
 
 # Read in the in-progress football game dataset, on which the trained machine
 # learning model will be employed:
 
-In_prog_dataset = pd.read_csv(os.getcwd() + "/model/Dataset_Final_InProgress_Game_Data_Week_13.csv")
+In_prog_dataset = pd.read_csv("Dataset_Final_InProgress_Game_Data_Week_13.csv")
 
 # -----------------------------------------------------------------------------
 
@@ -57,14 +56,10 @@ In_prog_dataset[Float_feat] = In_prog_dataset[Float_feat].astype("float")
 
 Scale_feat = ["ScoreDiff", "TODiff", "PenYdDiff", "TOPDiff"]
 
-In_prog_dataset = In_prog_dataset.replace(0, 3600)
-
 for Feature in Scale_feat:
     
     In_prog_dataset[Feature] = (In_prog_dataset[Feature] * (3600 / \
-                                In_prog_dataset.TimeRem)).round()
-    
-In_prog_dataset = In_prog_dataset.replace(3600, 0)
+                                (3600 - In_prog_dataset.TimeRem))).round()
 
 # Scale all numeric features in the dataset exactly as with the "Football_
 # dataset" variable in the "Script_Final_Trained_Model.py" script:
@@ -75,7 +70,7 @@ In_prog_dataset[Num_feat] = StandardScaler().\
 # Perform one-hot encoding on the dataset, exactly as with the "Football_
 # dataset" variable in the "Script_Final_Trained_Model.py" script:
                              
-In_prog_dataset = pd.get_dummies(In_prog_dataset, columns = Cat_feat,\
+In_prog_dataset2 = pd.get_dummies(In_prog_dataset, columns = Cat_feat,\
                                  prefix = Cat_feat)
 
 # Remove the "Rank" target column from the dataset, and add 14 filler columns
@@ -84,33 +79,195 @@ In_prog_dataset = pd.get_dummies(In_prog_dataset, columns = Cat_feat,\
 # hot-encoding, in the Week 12 in-progress dataset --> more features lead to
 # better predictions in this case):
 
-In_prog_dataset = In_prog_dataset.loc[:, In_prog_dataset.columns != "Rank"]
+In_prog_dataset2 = In_prog_dataset2.loc[:, In_prog_dataset2.columns != "Rank"]
 
 for Column in range(0, 14):
     
-    In_prog_dataset[Column] = 0
+    In_prog_dataset2[Column] = 0
 
 # -----------------------------------------------------------------------------
 
 # Use the reloaded model above to employ the trained model on this dataset,
 # now that it has been properly processed:
 
-Model_result = Model_reloaded.predict(In_prog_dataset).round()
+Model_result = Model_reloaded.predict(In_prog_dataset2)
+
+# -----------------------------------------------------------------------------
+
+# Perform post-processing steps on the predictions in "Model_result":
+
+# Put the raw predicted rankings from "Model_result" into a dataframe, and 
+# append the team names and previous ranks associated with the rankings to the
+# dataframe:
+
+mod_result = pd.DataFrame(Model_result, columns=['ranks'])
+
+mod_result['Team'] = In_prog_dataset['Team']
+mod_result['PrevRank'] = In_prog_dataset['PrevRank']
+mod_result['TimeRem'] = In_prog_dataset['TimeRem']
+
+# Remove results from teams not previously ranked above 50 using the scaled 
+# value of PrevRank:
+
+mod_result.drop(mod_result.loc[mod_result['PrevRank'] >= 1].index,\
+                inplace=True)
+
+# Create new dataframes for each quarter of results in "mod_result":
+
+result_1st = mod_result[(mod_result['TimeRem'] > 1)]
+result_2nd = mod_result[(mod_result['TimeRem'] > 0) &\
+                        (mod_result['TimeRem'] < 1)]
+result_3rd = mod_result[(mod_result['TimeRem'] > -1) &\
+                        (mod_result['TimeRem'] < 0)]
+result_4th = mod_result[(mod_result['TimeRem'] < -1)]
+
+# Sort the resulting rankings in order by the predicted ranks and previous
+# rank, then adjust the index of the dataframe so that it is in order:
+
+result_1st = result_1st.sort_values(by=['ranks', 'PrevRank'])
+result_2nd = result_2nd.sort_values(by=['ranks', 'PrevRank'])
+result_3rd = result_3rd.sort_values(by=['ranks', 'PrevRank'])
+result_4th = result_4th.sort_values(by=['ranks', 'PrevRank'])
+
+result_1st = result_1st.reset_index(drop=True)
+result_2nd = result_2nd.reset_index(drop=True)
+result_3rd = result_3rd.reset_index(drop=True)
+result_4th = result_4th.reset_index(drop=True)
+
+# Create a set to hold rankings that have been assigned so that duplicates can
+# be avoided:
+
+rank_set_1st = set()
+rank_set_2nd = set()
+rank_set_3rd = set()
+rank_set_4th = set()
+
+# Loop through the list of predicted rankings and assign an unique integer
+# rank based on team position in the sorted list as well as deviation 
+# between the predicted rank and the location in the list (because this set
+# of rankings is based on just a few games that don't represent all the teams
+# that would be in the top 25, the rank_diff accounts for the fact that there
+# will be gaps in the list of predicted rankings):
+
+for i in range(len(result_1st)):
+    pot_rank = i + 1
+    rank_diff = result_1st.iloc[i]['ranks'] - pot_rank
+    pot_rank2 = result_1st.iloc[i]['ranks'].round()
+    
+# If potential rank values are already in the set of assigned rankings, then
+# the potential value is increased by 1:
+    
+    if pot_rank in rank_set_1st:
+        pot_rank += 1
+    if pot_rank2 in rank_set_1st:
+        pot_rank2 += 1
+        
+# To adjust for gaps that should occur in the rankings when predictions are 
+# made for an incomplete list, particularly an issue for higher ranking (top
+# ten) teams, "if" statement checks that potential rank is reasonably close to 
+# original predicted value and then assigns either the potential rank based
+# on the for loop index or the original rounded rank accordingly:
+        
+    if (rank_diff <= 2) and (result_1st.iloc[i]['ranks'] < 10):
+        result_1st.at[i, 'ranks'] = pot_rank
+        rank_set_1st.add(pot_rank)
+    else:
+        result_1st.at[i, 'ranks'] = pot_rank2
+        rank_set_1st.add(pot_rank2)
+
+# Repeat the loop for each of the other 3 quarters:
+        
+for i in range(len(result_2nd)):
+    pot_rank = i + 1
+    rank_diff = result_2nd.iloc[i]['ranks'] - pot_rank
+    pot_rank2 = result_2nd.iloc[i]['ranks'].round()
+    
+# If potential rank values are already in the set of assigned rankings, then
+# the potential value is increased by 1:
+    
+    if pot_rank in rank_set_2nd:
+        pot_rank += 1
+    if pot_rank2 in rank_set_2nd:
+        pot_rank2 += 1
+# To adjust for gaps that should occur in the rankings when predictions are 
+# made for an incomplete list, particularly an issue for higher ranking (top
+# ten) teams, "if" statement checks that potential rank is reasonably close to 
+# original predicted value and then assigns either the potential rank based
+# on the for loop index or the original rounded rank accordingly:
+        
+    if (rank_diff <= 2) and (result_2nd.iloc[i]['ranks'] < 10):
+        result_2nd.at[i, 'ranks'] = pot_rank
+        rank_set_2nd.add(pot_rank)
+    else:
+        result_2nd.at[i, 'ranks'] = pot_rank2
+        rank_set_2nd.add(pot_rank2)
+
+for i in range(len(result_3rd)):
+    pot_rank = i + 1
+    rank_diff = result_3rd.iloc[i]['ranks'] - pot_rank
+    pot_rank2 = result_3rd.iloc[i]['ranks'].round()
+    
+# If potential rank values are already in the set of assigned rankings, then
+# the potential value is increased by 1:
+    
+    if pot_rank in rank_set_3rd:
+        pot_rank += 1
+    if pot_rank2 in rank_set_3rd:
+        pot_rank2 += 1
+        
+# To adjust for gaps that should occur in the rankings when predictions are 
+# made for an incomplete list, particularly an issue for higher ranking (top
+# ten) teams, "if" statement checks that potential rank is reasonably close to 
+# original predicted value and then assigns either the potential rank based
+# on the for loop index or the original rounded rank accordingly:
+        
+    if (rank_diff <= 2) and (result_3rd.iloc[i]['ranks'] < 10):
+        result_3rd.at[i, 'ranks'] = pot_rank
+        rank_set_3rd.add(pot_rank)
+    else:
+        result_3rd.at[i, 'ranks'] = pot_rank2
+        rank_set_3rd.add(pot_rank2)
+
+for i in range(len(result_4th)):
+    pot_rank = i + 1
+    rank_diff = result_4th.iloc[i]['ranks'] - pot_rank
+    pot_rank2 = result_4th.iloc[i]['ranks'].round()
+    
+# If potential rank values are already in the set of assigned rankings, then
+# the potential value is increased by 1:
+    
+    if pot_rank in rank_set_4th:
+        pot_rank += 1
+    if pot_rank2 in rank_set_4th:
+        pot_rank2 += 1
+        
+# To adjust for gaps that should occur in the rankings when predictions are 
+# made for an incomplete list, particularly an issue for higher ranking (top
+# ten) teams, if statement checks that potential rank is reasonably close to 
+# original predicted value and then assigns either the potential rank based
+# on the for loop index or the original rounded rank accordingly:
+        
+    if (rank_diff <= 2) and (result_4th.iloc[i]['ranks'] < 10):
+        result_4th.at[i, 'ranks'] = pot_rank
+        rank_set_4th.add(pot_rank)
+    else:
+        result_4th.at[i, 'ranks'] = pot_rank2
+        rank_set_4th.add(pot_rank2)
 
 ###############################################################################
 ###############################################################################
 
 # SECTION II - MACHINE LEARNING MODEL (EMPLOYMENT EVALUATION):
 
-# Output the actual and predicted (from the "Model Result" variable above) AP 
-# rankings for all teams previously ranked in the top 25 in the "In_prog_
+# Output the actual and predicted (from the "result_1st", etc. variables above) 
+# AP rankings for all teams previously ranked in the top 25 in the "In_prog_
 # dataset" dataset (refer to "PrevRank" feature). Note that all teams ranked
 # with a ranking higher than 25 are left out here, as they are not the focus of
 # our project, and therefore the trained model was not built to focus on those 
 # teams. Also note that integer rankings are listed in the order that top-25 
 # teams appear in the dataset. That order is as follows: Alabama, Ohio State,
 # Michigan, Penn State, Florida, Syracuse, Georgia, Pittsburgh, Clemson, LSU,
-# Kentucky, and Notre Dame. Also note that eachcactual ranking is repeated for 
+# Kentucky, and Notre Dame. Also note that each actual ranking is repeated for 
 # a team four times, to match those rankings up with predicted rankings for 
 # each team for each quarter of their live, in-progress game in Week 13:
 
@@ -120,11 +277,11 @@ Actual_AP_rankings_wk_13 = np.array([1, 1, 1, 1, 10, 10, 10, 10, 4, 4, 4, 4,\
                                      2, 2, 2, 8, 8, 8, 8, 17, 17, 17, 17, 3,\
                                      3, 3, 3])
 
-Predicted_AP_rankings_wk_14 = np.array([2, 3, 3, 3, 8, 8, 8, 8, 5, 5, 5, 5,\
-                                        14, 14, 14, 14, 15, 15, 15, 15, 15,\
-                                        15, 15, 15, 4, 4, 4, 4, 18, 18, 18,\
-                                        18, 3, 3, 3, 3, 9, 9, 8, 9, 13, 13,\
-                                        12, 14, 4, 4, 4, 4])
+Predicted_AP_rankings_wk_14 = np.array([1, 1, 1, 1, 9, 7, 8, 8, 4, 5, 10, 12,\
+                                        14, 14, 14, 14, 16, 16, 16, 16, 17,\
+                                        15, 15, 16, 3, 3, 3, 4, 18, 28, 28,\
+                                        32, 2, 2, 2, 2, 8, 6, 9, 9, 13, 13,\
+                                        12, 15, 15, 4, 4, 3])
     
 Actual_AP_rankings_wk_14 = np.array([1, 1, 1, 1, 6, 6, 6, 6, 8, 8, 8, 8,\
                                      12, 12, 12, 12, 10, 10, 10, 10, 18, 18,\
@@ -149,9 +306,9 @@ Emp_model_evaluation_MSE = metrics.mean_squared_error\
                                            Actual_AP_rankings_wk_14)
 
 # The R^2 value is not the best metric of model success, but the fact that it 
-# is 0.55 is passable. This means that the predicted and actual "Rank" values 
-# are somewhat correlated (since 0.55 is somewhat near 1 on an R^2 scale 
-# of -1 to 1).
+# is 0.74 is good. This means that the predicted and actual "Rank" values 
+# are somewhat correlated (since 0.74 is somewhat near 1 on an R^2 scale 
+# of 0 to 1).
 
 # -----------------------------------------------------------------------------
 
@@ -200,7 +357,7 @@ print(Predicted_AP_rankings_wk_14)
 # of our project:
     
 In_prog_dataset_2 = pd.read_csv\
-                    (os.getcwd() + "/model/Dataset_Final_InProgress_Game_Data_Week_13.csv")    
+                    ("Dataset_Final_InProgress_Game_Data_Week_13.csv")    
 In_prog_dataset_2 = In_prog_dataset_2[In_prog_dataset_2["PrevRank"] <= 25]  
 
 Team_names = ["Team", "OppTeam"]
@@ -239,22 +396,28 @@ for Index, Row in In_prog_dataset_2.iterrows():
 
 def Ranking_prediction(Team):
     
-    # NOTE: ensure that both "In_prog_dataset" and "Model_reloaded" are both
-    # present from above, as they are used in this function.
+    # NOTE: ensure that "result_1st", "result_2nd", "result_3rd", and
+    # "result_4th" are present from above, as they are used in this function.
     
-    Team_rank = In_prog_dataset[In_prog_dataset["Team" + "_" + str(Team)] == 1]
+    Func_mod_result_1 = result_1st["ranks"][result_1st["Team"] == Team].item()
+    Func_mod_result_2 = result_2nd["ranks"][result_2nd["Team"] == Team].item()
+    Func_mod_result_3 = result_3rd["ranks"][result_3rd["Team"] == Team].item()
+    Func_mod_result_4 = result_4th["ranks"][result_4th["Team"] == Team].item()
+
+    Func_mod_result_1 = int(Func_mod_result_1)
+    Func_mod_result_2 = int(Func_mod_result_2)
+    Func_mod_result_3 = int(Func_mod_result_3)
+    Func_mod_result_4 = int(Func_mod_result_4)
     
-    Func_model_result = Model_reloaded.predict(Team_rank).round()
-    Func_model_result = Func_model_result.astype("int")
-    Func_model_result = Func_model_result[0]
-    
-    return Func_model_result
+    return Func_mod_result_1, Func_mod_result_2, Func_mod_result_3,\
+           Func_mod_result_4
 
 Predicted_teams = ["Alabama", "Ohio State", "Michigan", "Penn State",\
                    "Florida", "Syracuse", "Georgia", "Pittsburgh", "Clemson",\
                    "LSU", "Kentucky", "Notre Dame"]
 
-print("These are predictions outputted by the Ranking_prediction function:")
+print("These are predictions outputted by the Ranking_prediction function.")
+print("Each team has four numbers/predictions, one for each game quarter:")
 
 for Team in Predicted_teams:
 
