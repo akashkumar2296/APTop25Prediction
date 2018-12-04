@@ -107,11 +107,11 @@ function predictRanking(team) {
 
 }
 
-function getTeamCurrentStats(team) {
+function getTeamCurrentStats(team, quarter) {
 	//if (realMode) {
 		//TODO: Retrieve current stats for team
 		$.ajax({  
-           url: 'http://localhost:5001/prediction/'+team,  
+           url: 'http://localhost:5001/prediction/'+team+'/'+quarter,  
            type: 'GET',  
            dataType: 'json',  
            crossDomain: true,
