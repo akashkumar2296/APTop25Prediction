@@ -1,18 +1,19 @@
 # This script is used to generate static data used on the UI
 # The input CSV file names are hard-coded and must be updated whenever CSV data files are added or renamed
 # It should not be run without review and update to see if the expected csv files still exists or not
+# The relative file paths assume that this script is run from the same folder where this script is located
 import csv
 
 header = ['Year', 'team', 'week', 'PrevRank', 'RankDiff', 'Conference', 'HAN', 'FavUnd', 'OppTeam', 'OppConf', 'ScoreDiff', 'WinLose', 'OT', 'TODiff', 'YPPDiff', 'PenYdDiff', 'TOPDiff', 'GameStatus', 'WinPer', 'TimeRem', 'Rank']
 teams  = []
 
-with open("../../../model/Dataset_Final_Historical_data.csv", newline="") as csvfile:
+with open("../../model/Dataset_Final_Historical_data.csv", newline="") as csvfile:
     hisdata = list(csv.reader(csvfile))
-with open("../../../model/Dataset_Final_Completed_Game_Data_Weeks_9_Through_11.csv", newline="") as csvfile:
+with open("../../model/Dataset_Final_Completed_Game_Data_Weeks_9_Through_11.csv", newline="") as csvfile:
     cpdata = list(csv.reader(csvfile))
-with open("../../../model/Dataset_Final_InProgress_Game_Data_Week_13.csv", newline="") as csvfile:
+with open("../../model/Dataset_Final_InProgress_Game_Data_Week_13.csv", newline="") as csvfile:
     ipdata = list(csv.reader(csvfile))
-with open("../../../model/Dataset_Final_InProgress_Game_Data_Week_12.csv", newline="") as csvfile:
+with open("../../model/Dataset_Final_InProgress_Game_Data_Week_12.csv", newline="") as csvfile:
     wk12cpdata = list(csv.reader(csvfile))
 
 
@@ -25,8 +26,8 @@ with open("../scripts/sim_team_details.js", "w") as jsFile:
             for j in range(len(header)-1):
                 line += header[j+1] + ":"
                 line += '"' + hisdata[i][j+1].strip().replace(" ","") + '",'
-                if (header[j+1] == "team" and hisdata[i][j+1].strip().replace(" ","") not in teams):
-                    teams.append(hisdata[i][j+1].strip().replace(" ",""))
+                if (header[j+1] == "team" and hisdata[i][j+1].strip() not in teams):
+                    teams.append(hisdata[i][j+1].strip())
             line = line[:len(line)-1] +"});\n"
             jsFile.write(line)
     for i in range(1, len(cpdata)):
@@ -35,8 +36,8 @@ with open("../scripts/sim_team_details.js", "w") as jsFile:
             for j in range(len(header)-1):
                 line += header[j+1] + ":"
                 line += '"' + cpdata[i][j+1].strip().replace(" ","") + '",'
-                if (header[j+1] == "team" and cpdata[i][j+1].strip().replace(" ","") not in teams):
-                    teams.append(cpdata[i][j+1].strip().replace(" ",""))
+                if (header[j+1] == "team" and cpdata[i][j+1].strip() not in teams):
+                    teams.append(cpdata[i][j+1].strip())
             line = line[:len(line)-1] +"});\n"
             jsFile.write(line)
     for i in range(1, len(wk12cpdata)):
@@ -45,8 +46,8 @@ with open("../scripts/sim_team_details.js", "w") as jsFile:
             for j in range(len(header)-1):
                 line += header[j+1] + ":"
                 line += '"' + wk12cpdata[i][j+1].strip().replace(" ","") + '",'
-                if (header[j+1] == "team" and wk12cpdata[i][j+1].strip().replace(" ","") not in teams):
-                    teams.append(wk12cpdata[i][j+1].strip().replace(" ",""))
+                if (header[j+1] == "team" and wk12cpdata[i][j+1].strip() not in teams):
+                    teams.append(wk12cpdata[i][j+1].strip())
             line = line[:len(line)-1] +"});\n"
             jsFile.write(line)
 
@@ -61,8 +62,8 @@ with open("../scripts/sim_in_progress_games.js", "w") as jsFile:
             for j in range(len(header)-1):
                 line += header[j+1] + ":"
                 line += '"' + ipdata[i][j+1].strip().replace(" ","") + '",'
-                if (header[j+1] == "team" and ipdata[i][j+1].strip().replace(" ","") not in teams):
-                    teams.append(ipdata[i][j+1].strip().replace(" ",""))
+                if (header[j+1] == "team" and ipdata[i][j+1].strip() not in teams):
+                    teams.append(ipdata[i][j+1].strip())
             line = line[:len(line)-1] +"});\n"
             jsFile.write(line)
 
