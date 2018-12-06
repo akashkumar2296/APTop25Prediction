@@ -126,8 +126,7 @@ def create_training_dataset(s_df):
     return final_t_df[['Year', 'Team', 'Week', 'RankDiff', 'OppTeam', 'Rank', 'PrevRank']]
 
 
-# scraped_df = gen_scraped_df()
-# print_csv(scraped_df, 'scraped_data.csv')
-scraped_df = read_csv('scraped_data.csv')
+scraped_df = gen_scraped_df()
+print_csv(scraped_df, 'scraped_data.csv')
 training_df = create_training_dataset(scraped_df)
 print_csv(training_df, 'training_data.csv')
