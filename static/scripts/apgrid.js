@@ -1,15 +1,26 @@
+//The main driver script for the UI.
+//It uses d3 to build the 4 SVG on the index.html temaplate:
+//#gridcontrol contains the button controls and drop-down for prediction and week filtering functions
+//#grid contains the AP ranking grid
+//#scoreboard contains the game tiles
+//#simulation contains the button controls and labels on the bottom for simulation functions.
+
+
+//parameters that drive the grid and tile sizes
 var num_week = 16;
 var num_team = 25;
 var rankings_tile_size = {w:35, h:35}
 var score_tile_size = {w:80, h:80}
-// var svg_size = {w:rankings_tile_size.w*(num_team)+100, h:rankings_tile_size.h*(num_week)+100}
 var apcolor = "lightgray";
 var predictcolor = "cyan";
 
+//determine the size of SVG needed based on the grid and tile sizes
 function calSvgSize(row, col, tile_size) {
 	return {w:tile_size.w*col+50, h:tile_size.h*row+50}
 }
 
+//build a 2-dim array to model each cell in the AP ranking grid to facilitate d3 calls
+//this approach is too restrictive and was not used at the end
 function makeGridData(rowcount, colcount, tile_size) {
 	var data = new Array();
 	var xpos = 1; //starting xpos and ypos at 1 so the stroke will show when we make the grid below
@@ -44,7 +55,8 @@ function makeGridData(rowcount, colcount, tile_size) {
 	return data;
 }
 
-
+//relate to using makeGridData for drawing a grid in d3
+//not used in the final app
 function rowToColBasedGridData(rowBasedData) {
 	var colBasedData = new Array();
 	rowBasedData[0].forEach(row => {
@@ -61,7 +73,9 @@ function rowToColBasedGridData(rowBasedData) {
 }
 
 
+//******************************  #gridcontrol: build the control row on the top of UI
 
+//week to show dropdown for filtering
 var data = d3.range(1, getCurrentWeek());
 
 var select = d3.select('#gridcontrol')
@@ -102,18 +116,20 @@ function clearPrediction() {
 }
 
 
+// Cleare the prediction row
 d3.select('#gridcontrol')
 .append("button")
 .text("Clear Prediction row")
 .on("click", function(){ clearPrediction()})
 
 
+// Run prediction and refresh the prediction row
 d3.select('#gridcontrol')
 .append("button")
 .text("Click to Predict: ")
 .on("click", function(){ showPrediction() })
 
-
+//callback to display returned predicted ranking of a team
 function showPredictionHandle(team, ranking) {
 	if (ranking == undefined) {
 		predictMsg.text(team + ": Predicted Ranking is unavailable");
@@ -123,6 +139,7 @@ function showPredictionHandle(team, ranking) {
 	}
 }
 
+//callback to display returned predicted rankings of top 25
 function showAllPredictionsHandle(rankings, quarter) {
 	if (rankings == undefined) {
 		predictMsg.text("Top 25 Predictions not yet available");
@@ -140,13 +157,12 @@ function showAllPredictionsHandle(rankings, quarter) {
 }
 
 
+//call the data interface to run predictions
 function showPrediction() {
 	var team = selectTeam.property('value');
 	weekShowing = parseInt(d3.select('select').property('value'));
 
 	if (team == "Top 25") {
-		// predictionShown = getPrediction();
-		// drawPredictionRow(rankings_grid);
 		getPrediction(showAllPredictionsHandle, currentSimTimePoint+1);
 	}
 	else {
@@ -184,6 +200,9 @@ var predictMsg = d3.select('#gridcontrol')
 .text("");
 
 
+
+//******************************  #grid: build the AP Ranking grid
+
 function refreshRankingsGrid(num_weeks) {
 	var num_weeks = parseInt(num_weeks);
 	var rGridSize = calSvgSize(num_weeks+1,27,rankings_tile_size);
@@ -195,6 +214,9 @@ function refreshRankingsGrid(num_weeks) {
 		;
 	showRankingsGrid(rankings_grid, num_weeks, rankings_tile_size);
 }
+
+
+//******************************  #scoreboard: build the game tiles
 
 function refreshScoreBoxes() {
 	d3.select("#scoreboard").selectAll("*").remove();
@@ -228,8 +250,9 @@ var scoreboxes = drawScorebox3(score_grid, getGameData(), score_tile_size);
 weekShowing = parseInt(weeksToShowOptions.property('value'));
 refreshRankingsGrid(weekShowing);
 
-//simulation section
 
+
+//******************************  #simulation: build the simulation controls
 
 simulation_text = d3.select('#simulation')
 .append("text")
@@ -287,6 +310,6 @@ function simulate_real_data() {
 	getPrediction(showAllPredictionsHandle, currentSimTimePoint+1);
 }
 
-
+//refresh the simulation game data every 2 secs.
 var interval = setInterval(function() { simulate_real_data() }, 2000);
 var simulating = true;

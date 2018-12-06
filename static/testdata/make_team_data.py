@@ -1,3 +1,6 @@
+# This script is used to generate static data used on the UI
+# The input CSV file names are hard-coded and must be updated whenever CSV data files are added or renamed
+# It should not be run without review and update to see if the expected csv files still exists or not
 import csv
 
 header = ['Year', 'team', 'week', 'PrevRank', 'RankDiff', 'Conference', 'HAN', 'FavUnd', 'OppTeam', 'OppConf', 'ScoreDiff', 'WinLose', 'OT', 'TODiff', 'YPPDiff', 'PenYdDiff', 'TOPDiff', 'GameStatus', 'WinPer', 'TimeRem', 'Rank']
@@ -5,11 +8,11 @@ teams  = []
 
 with open("../../../model/Dataset_Final_Historical_data.csv", newline="") as csvfile:
     hisdata = list(csv.reader(csvfile))
-with open("../../../model/Dataset_Final_Completed_Game_Data.csv", newline="") as csvfile:
+with open("../../../model/Dataset_Final_Completed_Game_Data_Weeks_9_Through_11.csv", newline="") as csvfile:
     cpdata = list(csv.reader(csvfile))
 with open("../../../model/Dataset_Final_InProgress_Game_Data_Week_13.csv", newline="") as csvfile:
     ipdata = list(csv.reader(csvfile))
-with open("../../../model/Dataset_Final_Completed_Game_Data_Week_12.csv", newline="") as csvfile:
+with open("../../../model/Dataset_Final_InProgress_Game_Data_Week_12.csv", newline="") as csvfile:
     wk12cpdata = list(csv.reader(csvfile))
 
 

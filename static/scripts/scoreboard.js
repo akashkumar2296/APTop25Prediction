@@ -1,5 +1,11 @@
+//This script manages the drawing, refresh and tooltips on the game tiles.
+
+
 var deltaX = 0;
 var deltaY = 0;
+
+//game tiles can be drag-and-drop, but this function did not seem useful during testing
+//so it was not used on the final app
 
 function dragstarted_scorebox(d) {
 	d3.select(this).raise().classed("active", true);
@@ -43,7 +49,9 @@ function dragended_scorebox(d) {
 	d3.select(this).classed("active", false);
   }
 
-//build tooltips
+
+ //build tooltips
+ //loop through the team statistics and display them. 
 function tooltip_text_team(team) {
 	var tooltips = "<strong>" + team + "</strong><br>" 
 	var teamStats = getTeamCurrentStats(team);
@@ -79,6 +87,11 @@ var tooltip_team2 = d3.tip()
 	.html(function(d) {return tooltip_team2_text(d);});
 
 
+
+//draw a tile per game and display the team images, score
+//and time remaining.
+//drap-drop and doubleclick features commented out since
+//they did not seem useful during testing
 function drawScorebox3(svgarea, scoreboxdata, tile_size) {
 	var width = parseInt(svgarea.style("width"), 10);
 	var height = parseInt(svgarea.style("height"), 10);
@@ -212,6 +225,8 @@ function drawScorebox3(svgarea, scoreboxdata, tile_size) {
 }
 
 
+//update the game scores
+//this function was not used in the final app
 function refreshScore(svgarea) {
 	svgarea.selectAll("text.score.team1").text(function(d) { d.g.team1.score += 1; return d.g.team1.score;});
 }

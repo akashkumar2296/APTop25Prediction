@@ -1,3 +1,7 @@
+//This is the interface between the UI and back-end services.  
+//All REST service calls and data generation are done in this script.
+
+
 var realMode = false; //set to true to use Python data.
 var sim_aprankings = []
 var simTimePoints = ['End of 1st', 'End of 2nd', 'End of 3rd', 'Final']
@@ -6,6 +10,7 @@ var currentSimTimePoint = 0;
 
 
 
+//determine the AP rankings from sim_team_details either based on the Rank or PrevRank attributes
 function genSim_aprankings() {
 	sim_aprankings = []
 	for (var i=0; i<getCurrentWeek(); i++){
@@ -28,6 +33,7 @@ function genSim_aprankings() {
 
 }
 
+//returns the current week
 function getCurrentWeek() 
 {	
 	if (realMode) {
@@ -38,6 +44,7 @@ function getCurrentWeek()
 }	
 
 
+//returns the AP rankings for the week
 function getRankings(week) {
 	if (realMode) {
 		//TODO: retrieve AP rankings for the given week
@@ -51,6 +58,8 @@ function getRankings(week) {
 	}
 }
 
+//returns the prediction for all teams at the end of the quarter
+//the callback function is provided by the caller to process the data returned by the REST
 function getPrediction(callback, quarter) {
 	if(quarter){
 
@@ -87,33 +96,9 @@ function getPrediction(callback, quarter) {
 
 	}
 
-	// prediction = []
-	// if (realMode) {
-	// 	//TODO: run ML model to get top 25 rankings prediction.
-	// }
-	// else {
-	// 	prediction = []
-	// 	for (var i=0; i<25; i++) {
-	// 		prediction.push("unknown");
-	// 	}
-	// 	prediction[1] = "Alabama";
-	// 	prediction[2] = "Clemson";
-	// 	prediction[3] = "NotreDame";
-	// 	prediction[4] = "Georgia";
-	// 	prediction[5] = "Michigan";
-	// 	prediction[8] = "LSU";
-	// 	prediction[7] = "OhioState";
-	// 	prediction[12] = "Kentucky";
-	// 	prediction[13] = "PennState";
-	// 	prediction[14] = "Florida";
-	// 	prediction[15] = "Syracuse";
-	// 	prediction[17] = "Pittsburgh";
-	// 	}
-	// return prediction;
-
-
 }
 
+//generate a list of prediction placeholders
 function getUnknownPrediction() {
 	prediction = []
 	for (var i=0; i<25; i++) 
@@ -122,6 +107,8 @@ function getUnknownPrediction() {
 }
 
 
+//call the REST to predict ranking of team for quarter
+//callback from the caller to process the data returned by the REST
 function predictRanking(callback, team, quarter=null) {
 
 	var team_name;
@@ -167,53 +154,11 @@ function predictRanking(callback, team, quarter=null) {
 
 	}
 
-	// 	prediction = getPrediction();
-	// 	ranking = 50;
-	// 	for (var i=0; i<prediction.length; i++) {
-	// 		if (team == prediction[i]) {
-	// 			ranking = i+1;
-	// 			break;
-	// 		}
-	// 	}
-	// 	return ranking;
-
 }
 
+//return the team statistics from sim_in_progress_games
+//this is used to simulate real-time data feed
 function getTeamCurrentStats(team, quarter=null) {
-	// //if (realMode) {
-	// 	//TODO: Retrieve current stats for team
-	// 	if(quarter){
-
-	// 		$.ajax({  
-    //        	url: 'http://localhost:5001/prediction/'+team+'/'+quarter,  
-    //        	type: 'GET',  
-    //        	dataType: 'json',  
-    //        	crossDomain: true,
-    //        	success: function (data, textStatus, xhr) {  
-    //             console.log(data);  // ***** Data = Team's Ranking ******
-    //        	},  
-    //        	error: function (xhr, textStatus, errorThrown) {  
-    //             console.log('Error in Operation');  
-    //        	}  
-    //     	});
-	// 	}
-	// 	else{
-	// 		$.ajax({  
-    //        	url: 'http://localhost:5001/prediction/'+team,  
-    //        	type: 'GET',  
-    //        	dataType: 'json',  
-    //        	crossDomain: true,
-    //        	success: function (data, textStatus, xhr) {  
-    //             console.log(data);  // ***** Data = Team's Ranking ******
-    //        	},  
-    //        	error: function (xhr, textStatus, errorThrown) {  
-    //             console.log('Error in Operation');  
-    //        	}  
-    //     	});
-
-	// 	}
-	//}
-	// else {
 		teamStats = []
 		for (var i=0; i<sim_in_progress_games.length; i++) {
 			if (sim_in_progress_games[i].team == team && sim_in_progress_games[i].TimeRem == simEquivalentTimeRem[currentSimTimePoint]) {
@@ -222,10 +167,10 @@ function getTeamCurrentStats(team, quarter=null) {
 			}
 		}
 		return teamStats;
-
-	// }
 }
 
+
+//return historical team statistics from sim_team_details
 function getTeamStats(team, week) {
 	if (realMode) {
 		//TODO: Retrieve stats for team for week
@@ -244,6 +189,9 @@ function getTeamStats(team, week) {
 }
 
 
+
+//return real-time game data from sim_in_progress_games
+//this is used to simulate real-time data feed
 function getGameData() {
 
 	if (realMode) {

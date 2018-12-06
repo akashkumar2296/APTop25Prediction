@@ -1,3 +1,11 @@
+//Data script.  This is a static list of in-game data, generated with ../testdata/make_team_data.py
+//Ideally this information would come from a real-time data feed, but due to limited resources for
+//the project, this list is generated from in-game information captured at game time.
+//This list should be rebuit when new historical or game data is loaded into the Python model
+//this is the source of the in-game information (scores and time remaining) and team statistics tooltips on the game tiles
+//note that each game has 4 entries, one per quarter.  Therefore, we have a snapshot of the game information at the
+//end of each quarter.  this time series allows us to run the simulation features of the app.
+
 var sim_in_progress_games = new Array();
     sim_in_progress_games.push({team:"Alabama",week:"13",PrevRank:"1",RankDiff:"-30",Conference:"SEC",HAN:"H",FavUnd:"F",OppTeam:"Auburn",OppConf:"SEC",ScoreDiff:"0",WinLose:"IP",OT:"N",TODiff:"0",YPPDiff:"2.085",PenYdDiff:"31",TOPDiff:"-16",GameStatus:"InProgress",WinPer:"100",TimeRem:"2700",Rank:""});
     sim_in_progress_games.push({team:"Auburn",week:"13",PrevRank:"31",RankDiff:"30",Conference:"SEC",HAN:"A",FavUnd:"U",OppTeam:"Alabama",OppConf:"SEC",ScoreDiff:"0",WinLose:"IP",OT:"N",TODiff:"0",YPPDiff:"-2.085",PenYdDiff:"-31",TOPDiff:"16",GameStatus:"InProgress",WinPer:"63.64",TimeRem:"2700",Rank:""});

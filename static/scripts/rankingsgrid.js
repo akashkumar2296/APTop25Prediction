@@ -1,7 +1,10 @@
+//This script manages the drawing, refresh and tooltips on the AP ranking grid.
+
 var rankingGridData = [];
-var predictionShown = getUnknownPrediction();
+var predictionShown = getUnknownPrediction();  //stores which of the 25 predictions are being displayed
 var weekShowing;
 
+//draw the week numbers header column
 function drawWeekHeaders(grid, headerCells, tile_size, num_week) {
 	var weekHeader = grid.selectAll(".weekheader")
 		.data(headerCells)
@@ -21,6 +24,7 @@ function drawWeekHeaders(grid, headerCells, tile_size, num_week) {
 }
 
 
+//draw the ranking # header row
 function drawRankingHeaders(grid, rankingHeaderCells, tile_size) {
 	var rankingHeader = grid.selectAll(".rankingheader")
 		.data(rankingHeaderCells)
@@ -37,6 +41,7 @@ function drawRankingHeaders(grid, rankingHeaderCells, tile_size) {
 }
 
 //build tooltips
+//loop through all the attributes in the statistics object and display them
 function tooltip_text(d) {
 	var tooltips = "<strong>" + d.team + "</strong><br>" 
 	var week = parseInt(d.week) + getCurrentWeek() - weekShowing - 1;
@@ -55,11 +60,6 @@ function tooltip_text(d) {
 		}
 	}
 	return tooltips;
-
-	// var tooltips = "<strong>Team " + d.team + " in Week "+ d.week + "</strong><br>";
-	// tooltips += "Show some stats here......<br>";
-	// tooltips += "or some charts, etc.<br>";
-	// return tooltips;
 }
 
 var tooltip = d3.tip()
@@ -67,6 +67,7 @@ var tooltip = d3.tip()
 	.offset([150,80])
 	.html(function(d) {return tooltip_text(d);});
 
+//draw the rankings for a week
 function drawRankings(grid, rankingCells, rankings, background, week) {
 	grid.selectAll(".rankings")
 		.data(rankingCells)
@@ -103,10 +104,13 @@ function drawRankings(grid, rankingCells, rankings, background, week) {
 }
 
 
+//draw the predictions
 function drawPredictionRow(grid) {
 	drawRankings(grid, rankingGridData[weekShowing+1], predictionShown, predictcolor, weekShowing+1 );
 }
 
+
+//main driver to draw the complete AP Ranking Grid.
 function showRankingsGrid(grid, num_week, tile_size) {
 	rankingGridData = makeGridData(num_week+1, num_team, tile_size);
 	var colBasedGridData = rowToColBasedGridData(rankingGridData)

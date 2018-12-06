@@ -1,3 +1,8 @@
+//Data script.  This is a static list of team statistics, generated with ../testdata/make_team_data.py
+//This list should be rebuit when new historical or game data is loaded into the Python model
+//this is the source of the team statistics tooltips.
+
+
 var sim_team_details = new Array();
     sim_team_details.push({team:"AirForce",week:"1",PrevRank:"50",RankDiff:"0",Conference:"MWC",HAN:"H",FavUnd:"F",OppTeam:"StonyBrook",OppConf:"FCS",ScoreDiff:"38",WinLose:"Win",OT:"N",TODiff:"",YPPDiff:"",PenYdDiff:"",TOPDiff:"",GameStatus:"Completed",WinPer:"100.000",TimeRem:"0",Rank:"50"});
     sim_team_details.push({team:"AirForce",week:"2",PrevRank:"50",RankDiff:"0",Conference:"MWC",HAN:"A",FavUnd:"U",OppTeam:"FAU",OppConf:"CUSA",ScoreDiff:"-6",WinLose:"Lose",OT:"N",TODiff:"0",YPPDiff:"-6.369202899",PenYdDiff:"-37",TOPDiff:"334",GameStatus:"Completed",WinPer:"50.000",TimeRem:"0",Rank:"50"});

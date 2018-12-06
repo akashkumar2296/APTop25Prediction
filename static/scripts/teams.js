@@ -1,3 +1,10 @@
+//Data script.  This is a static list of teams, generated with ../testdata/make_team_data.py
+//This list should be rebuit when new historical or game data is loaded into the Python model
+//teams.id is the unique id for a team;  
+//teams.display is the display name, but it is also the team name used in the Python model
+//the difference between id and display is the lack of space characters in the string.
+//since id is used to reference image names, we can't have spaces in them.
+
 var teams = new Array();
     teams.push({id:"AirForce", display:"Air Force"});
     teams.push({id:"Akron", display:"Akron"});
