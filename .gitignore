@@ -2,3 +2,6 @@
 ../model/.DS_Store
 .DS_Store
 flask-env/
+*.pyc
+*.pyc
+*.pyc
