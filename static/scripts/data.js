@@ -66,7 +66,7 @@ function getPrediction(callback, quarter) {
 		$.ajax({  
 		// you may modify the URL to point to localhost as follows or modify the URL to point to your hosting server
 		// url: 'http://localhost:5001/prediction/All'+'/'+quarter,  
-		   url: 'http://http://www.ap25predictor.com/prediction/All'+'/'+quarter,  
+		   url: 'http://www.ap25predictor.com/prediction/All'+'/'+quarter,  
 		   type: 'GET',  
 		   dataType: 'json',  
 		   crossDomain: true,
@@ -84,7 +84,7 @@ function getPrediction(callback, quarter) {
 		$.ajax({  
 		// you may modify the URL to point to localhost as follows or modify the URL to point to your hosting server
 		// url: 'http://localhost:5001/prediction/All',  
-		   url: 'http://http://www.ap25predictor.com/prediction/All',  
+		   url: 'http://www.ap25predictor.com/prediction/All',  
 		   type: 'GET',  
 		   dataType: 'json',  
 		   crossDomain: true,
@@ -128,7 +128,7 @@ function predictRanking(callback, team, quarter=null) {
 		$.ajax({  
 		// you may modify the URL to point to localhost as follows or modify the URL to point to your hosting server
 		// url: 'http://localhost:5001/prediction/'+team_name+'/'+quarter,  
-		url: 'http://http://www.ap25predictor.com/prediction/'+team_name+'/'+quarter,  
+		url: 'http://www.ap25predictor.com/prediction/'+team_name+'/'+quarter,  
 		type: 'GET',  
 		   dataType: 'json',  
 		   crossDomain: true,
@@ -146,7 +146,7 @@ function predictRanking(callback, team, quarter=null) {
 		$.ajax({  
 		// you may modify the URL to point to localhost as follows or modify the URL to point to your hosting server
 		// url: 'http://localhost:5001/prediction/'+team_name,  
-		   url: 'http://http://www.ap25predictor.com/prediction/'+team_name,  
+		   url: 'http://www.ap25predictor.com/prediction/'+team_name,  
 		   type: 'GET',  
 		   dataType: 'json',  
 		   crossDomain: true,
