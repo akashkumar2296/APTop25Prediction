@@ -99,7 +99,7 @@ var weeksToShowOptions = select
 	.data(d3.range(1, getCurrentWeek())).enter()
 	.append('option')
 		.classed("option", true)
-		.text(function (d) { return d; });
+		.text(function (d) { return getCurrentWeek() - d; });
 
 
 
@@ -116,7 +116,7 @@ function clearPrediction() {
 }
 
 
-// Cleare the prediction row
+// Clear the prediction row
 d3.select('#gridcontrol')
 .append("button")
 .text("Clear Prediction row")
