@@ -37,7 +37,7 @@ pyparsing==2.2.1
 PySocks==1.6.8
 python-dateutil==2.7.3
 pytz==2018.5
-PyYAML==3.13
+PyYAML==5.4
 requests==2.18.4
 ruamel-yaml==0.15.41
 scikit-learn==0.19.2
